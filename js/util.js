@@ -181,25 +181,31 @@ export const util = (() => {
         button.disabled = true;
         document.querySelector('body').style.overflowY = 'scroll';
         AOS.init();
-        audio.play();
-
-        if (localStorage.getItem('alertClosed')) {
-            document.getElementById('information').style.display = 'none';
-        }
-
         theme.check();
 
         opacity('welcome', 0.025);
         document.getElementById('button-theme').style.display = 'block';
-        countDownDate();
-
-        confetti({
-            origin: { y: 0.9 },
-            zIndex: 1057
-        });
         audio.showButton();
+        countDownDate();
+        audio.play();
+
+        // var scalar = 1;
+        confetti({
+            origin: { y: 1 },
+            zIndex: 1057,
+            // scalar
+        });
+
+        setTimeout(function (){
+            animation();  
+        }, 3000);
+
         
 
+        // if (localStorage.getItem('alertClosed')) {
+        //     document.getElementById('information').style.display = 'none';
+        // }
+        
         // const token = document.querySelector('body').getAttribute('data-key');
         // const status = await storeConfig(token);
         // if (status === 200) {
