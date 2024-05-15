@@ -22,8 +22,8 @@ title: ChrisKrisAdventure
 email: ChrisKrisAdventure@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Chris and Kristin online wedding save the date.
-baseurl: "ChrisKrisAdventure" # the subpath of your site, e.g. /blog
-url: "http://ChrisKrisAdventure.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/ChrisKrisAdventure" # the subpath of your site, e.g. /blog
+url: "https://ChrisKrisAdventure.com" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: jekyllrb
 # github_username:  jekyll
 
