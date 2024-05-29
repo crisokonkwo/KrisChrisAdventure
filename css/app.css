@@ -14,20 +14,6 @@ body {
     font-family: 'Sacramento', cursive !important;
 }
 
-.column-1 {
-    float: left;
-    width: 50%;
-    padding: 5px;
-}
-
-.column-amp {
-    float: left;
-    width: 5%;
-    /* padding: 5px; */
-}
-
-
-
 .fa-solid-love {
     font-weight: 900;
     color: red;
