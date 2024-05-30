@@ -30,9 +30,9 @@
     <!-- <meta name="theme-color" content="#111111"> -->
     <meta name="color-scheme" content="dark">
     <link rel="canonical" href="http://127.0.0.1:4000/ChrisKrisAdventure/">
-    <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:4000/ChrisKrisAdventure/faviconv1.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1:4000/ChrisKrisAdventure/favicon.ico">
     <!-- <link rel="apple-touch-icon" sizes="192x192" type="image/png" href="https://ulems.my.id/assets/images/icon-192x192.png"> -->
-    <link rel="icon" type="image/x-icon" href="http://127.0.0.1:4000/ChrisKrisAdventure/wedding-logo_v4.webp">
+    <link rel="icon" type="image/x-icon" href="http://127.0.0.1:4000/ChrisKrisAdventure/favicon.ico">
 
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" crossorigin="anonymous">
@@ -75,7 +75,7 @@
 <body>
 
     <!-- Navbar Bottom -->
-    <nav class="navbar bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menu">
+    <nav class="container navbar bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menu">
         <ul class="navbar-nav nav-justified w-100 align-items-center">
             <li class="nav-item">
                 <a class="nav-link" href="#home">
@@ -90,17 +90,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#date">
+                <a class="nav-link" href="#date-maps">
                     <i class="fa-solid fa-calendar-check"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Date</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" , href="#maps">
                     <i class="fa-solid fa-map-location-dot me-2"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Venue</span>
                 </a>
-            </li>
+            </li> -->
             <!-- <li class="nav-item">
               <a class="nav-link" href="#galeri">
                   <i class="fa-solid fa-images"></i>
@@ -121,10 +121,23 @@
         data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
         <!-- Home -->
         <section class="container" id="home">
-
+            
             <div class="text-center pt-4">
+                <!-- Header -->
+            <header>
+                <div class="color-theme-white btn-outline-light ">
+                    <a href="#" >
+                        <picture>
+                            <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
+                            <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
+                            <img src="./assets/images/dark-wedding-logo.png" width="100" height="62" alt="Logo">
+                          </picture>
+                        
+                    </a>
+                </div>
+            </header>
                 <h1 class="font-esthetic my-4" style="font-size: 2.5rem;">Save The Date</h1>
-
+                
                 <div class="py-4">
                     <div class="img-crop border border-3 border-light shadow mx-auto">
                         <img src="./assets/images/bg.jpeg" alt="bg" onclick="util.modal(this)">
@@ -160,7 +173,7 @@
         <!-- Bride and Groom info -->
         <section class="dark-section bg-black" id="bride">
 
-            <div class="text-center">
+            <div class="container text-center pt-4">
                 <!-- <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem"> Welcome to the start of our beautiful
                     adventure, where our hearts join. </h1> -->
 
@@ -330,7 +343,7 @@
                   </div>
               </div> -->
 
-                <div class="py-2" data-aos="fade-up" data-aos-duration="1500" id="maps">
+                <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
                     <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
                         <h1 class="font-esthetic" style="font-size: 2rem;">Venue</h1>
                         <p><strong>OceanCliff</strong><br>
