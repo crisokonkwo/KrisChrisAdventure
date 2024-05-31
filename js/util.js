@@ -177,13 +177,18 @@ export const util = (() => {
     //         });
     // };
 
-    const open = async (button) => {
+    const opensavedate = async (button) => {
+        opacity('welcome', 0.025);
         button.disabled = true;
+        window.location.href='save-the-date.html'
+    }
+
+    const open = async () => {
+        // console.log(document)
         document.querySelector('body').style.overflowY = 'scroll';
         AOS.init();
         theme.check();
-
-        opacity('welcome', 0.025);
+        
         document.getElementById('button-theme').style.display = 'block';
         audio.showButton();
         countDownDate();
@@ -200,8 +205,6 @@ export const util = (() => {
             animation();  
         }, 3000);
 
-        
-
         // if (localStorage.getItem('alertClosed')) {
         //     document.getElementById('information').style.display = 'none';
         // }
@@ -215,6 +218,7 @@ export const util = (() => {
     };
 
     return {
+        opensavedate,
         open,
         copy,
         show,
