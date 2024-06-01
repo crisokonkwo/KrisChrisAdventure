@@ -179,7 +179,7 @@ export const util = (() => {
 
     const opensavedate = async (button) => {
         // opacity('welcome', 0.025);
-        button.disabled = true;
+        // button.disabled = true;
         window.location.href='save-the-date.html'
     }
 
