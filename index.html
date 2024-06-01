@@ -110,6 +110,12 @@
             </div>
         </div>
 
+        <script>
+            history.pushState(null, null, window.location.href);
+            history.back();
+            window.onpopstate = () => history.forward();
+        </script>
+
         <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha256-CDOy6cOibCWEdsRiZuaHf8dSGGJRYuBGC+mjoJimHGw=" crossorigin="anonymous"></script>
