@@ -75,6 +75,11 @@
 </head>
 
 <body onload="util.open(this)">
+    <script>
+        history.pushState(null, null, window.location.href);
+        history.back();
+        window.onpopstate = () => history.forward();
+    </script>
 
     <!-- Navbar Bottom -->
     <nav class="container navbar bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menu">
