@@ -68,13 +68,25 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
 
+    <!-- Include AOS library -->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    
+
     <!-- App -->
     <link rel="stylesheet" href="./css/app.css">
     <script src="./js/savethedate.js" type="module" defer></script>
     
+    <script src="./js/util.js" type="module" defer></script>
+    <script src="./js/theme.js" type="module" defer></script>
+    <script src="./js/audio.js" type="module" defer></script>
+    
+    
+    
 </head>
 
-<body onload="util.open(this)">
+<body>
+    <!-- Your page content -->
     <!-- <script>
         history.pushState(null, null, window.location.href);
         history.back();
@@ -148,7 +160,7 @@
                 
                 <div class="py-4">
                     <div class="img-crop border border-3 border-light shadow mx-auto">
-                        <img src="./assets/images/bg.jpeg" alt="bg">
+                        <img src="./assets/images/bg.jpeg" alt="bg" onclick="util.modal(this)">
                     </div>
                 </div>
 
@@ -224,7 +236,7 @@
                 <div class="overflow-x-hidden">
                     <div data-aos="fade-right" data-aos-duration="2000">
                         <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/boy.png" alt="Snow">
+                            <img src="./assets/images/boy.png" alt="groom" onclick="util.modal(this)">
                         </div>
                         <h1 class="font-esthetic" style="font-size: 3rem;">Christopher Okonkwo</h1>
                         <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">Blah Blah...
@@ -255,7 +267,7 @@
                     </div>
                     <div data-aos="fade-left" data-aos-duration="2000">
                         <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/boy.png" alt="Forest">
+                            <img src="./assets/images/boy.png" alt="bride" onclick="util.modal(this)">
                         </div>
                         <h1 class="font-esthetic" style="font-size: 3rem;">Kristin Pratt</h1>
                         <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">The brilliant mathematician
@@ -435,6 +447,60 @@
         data-status="true" data-url="./assets/music/soundv2.mp3">
         <i class="fa-solid fa-circle-pause spin-button"></i>
     </button>
+
+    <!-- Modal Image Large -->
+    <div class="modal fade" id="modal-image" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content rounded-4">
+                <div class="modal-body p-0">
+                    <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                        <img class="w-100" alt="image" id="show-modal-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal structure -->
+    <!-- <div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="modalImageLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalImageLabel">Image Preview</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="show-modal-image" src="" class="img-fluid" alt="Modal Image">
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('body').style.overflowY = 'scroll';
+            AOS.init();
+            theme.check();
+            
+            document.getElementById('button-theme').style.display = 'block';
+            audio.showButton();
+            util.countDownDate();
+            audio.play();
+
+            confetti({
+                origin: { y: 1 },
+                zIndex: 1057,
+            });
+
+            setTimeout(function (){
+                util.animation();  
+            }, 3000);
+        });
+    </script>
 
     <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

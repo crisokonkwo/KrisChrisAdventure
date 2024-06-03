@@ -177,33 +177,33 @@ export const util = (() => {
     //         });
     // };
 
-    const opensavedate = async (button) => {
-        // opacity('welcome', 0.025);
-        // button.disabled = true;
+    // const opensavedate = async (button) => {
+    //     // opacity('welcome', 0.025);
+    //     // button.disabled = true;
+    //     window.location.href='save-the-date.html'
+    // }
+
+    const open = async (button) => {
         window.location.href='save-the-date.html'
-    }
-
-    const open = async () => {
-        // console.log(document)
-        document.querySelector('body').style.overflowY = 'scroll';
-        AOS.init();
-        theme.check();
+        // document.querySelector('body').style.overflowY = 'scroll';
+        // AOS.init();
+        // theme.check();
         
-        document.getElementById('button-theme').style.display = 'block';
-        audio.showButton();
-        countDownDate();
-        audio.play();
+        // document.getElementById('button-theme').style.display = 'block';
+        // audio.showButton();
+        // countDownDate();
+        // audio.play();
 
-        // var scalar = 1;
-        confetti({
-            origin: { y: 1 },
-            zIndex: 1057,
-            // scalar
-        });
+        // // var scalar = 1;
+        // confetti({
+        //     origin: { y: 1 },
+        //     zIndex: 1057,
+        //     // scalar
+        // });
 
-        setTimeout(function (){
-            animation();  
-        }, 3000);
+        // setTimeout(function (){
+        //     animation();  
+        // }, 3000);
 
         // if (localStorage.getItem('alertClosed')) {
         //     document.getElementById('information').style.display = 'none';
@@ -218,7 +218,6 @@ export const util = (() => {
     };
 
     return {
-        opensavedate,
         open,
         copy,
         show,
