@@ -11,7 +11,7 @@ export const session = (() => {
 
     // theme.check();
 
-    (new bootstrap.Modal('#loginModal')).show();
+    new bootstrap.Modal('#loginModal').show();
 
     
 
@@ -36,9 +36,10 @@ export const session = (() => {
     //     user.getStatUser();
     //     comment.comment();
     // }
+    //action="login.php" method="POST"
 
     const login = async (button) => {
-        const correctPassword = "correctPassword";
+        const correctPassword = "chrisandkris25";
 
         const btn = util.disableButton(button, '<div class="spinner-border spinner-border-sm me-1" role="status"></div>Loading..');
         const input = document.getElementById('loginName');
