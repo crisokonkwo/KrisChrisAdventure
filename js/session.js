@@ -11,7 +11,7 @@ export const session = (() => {
 
     // theme.check();
 
-    new bootstrap.Modal('#loginModal').show();
+    (new bootstrap.Modal('#loginModal')).show();
 
     
 
@@ -38,25 +38,31 @@ export const session = (() => {
     // }
 
     const login = async (button) => {
+        const correctPassword = "correctPassword";
 
         const btn = util.disableButton(button, '<div class="spinner-border spinner-border-sm me-1" role="status"></div>Loading..');
         const input = document.getElementById('loginName');
+        const password = document.getElementById('loginPassword');
         input.disabled = true;
+        password.disabled = true;
 
-        if (input.value.trim() !== '') {
-            const name = encodeURIComponent(input.value.trim());
-            console.log(name)
-            bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
-            window.location.href=`welcome-page.html?to=${name}`
-            //document.getElementById('welcome').style.display = 'block';
-
-            //guest(email.value.trim());
-            
-
+        if (input.value.trim() !== '' && password.value.trim() !== '') {
+            if (password.value === correctPassword) {
+                const name = encodeURIComponent(input.value.trim());
+                // console.log(name)
+                bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
+                window.location.href=`welcome-page.html?to=${name}`;
+            } else {
+                alert('Incorrect password. Please try again.');
+                btn.restore();
+                email.disabled = false;
+                password.disabled = false;
+            }
         } else {
-            alert('Please enter your first and last name.');
+            alert('Please enter your name (first and last) and password.');
             btn.restore();
             email.disabled = false;
+            password.disabled = false;
         }
         // password: document.getElementById('loginPassword').value
         // bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
