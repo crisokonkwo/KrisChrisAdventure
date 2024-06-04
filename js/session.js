@@ -11,7 +11,7 @@ export const session = (() => {
 
     // theme.check();
 
-    new bootstrap.Modal('#loginModal').show();
+    (new bootstrap.Modal('#loginModal')).show();
 
     
 
@@ -36,10 +36,10 @@ export const session = (() => {
     //     user.getStatUser();
     //     comment.comment();
     // }
-    //action="login.php" method="POST"
-
+    // action="login.php" method="POST"
+    const correctPassword = "chrisandkris25";
     const login = async (button) => {
-        const correctPassword = "chrisandkris25";
+        
 
         const btn = util.disableButton(button, '<div class="spinner-border spinner-border-sm me-1" role="status"></div>Loading..');
         const input = document.getElementById('loginName');
@@ -49,10 +49,12 @@ export const session = (() => {
 
         if (input.value.trim() !== '' && password.value.trim() !== '') {
             if (password.value === correctPassword) {
-                const name = encodeURIComponent(input.value.trim());
-                // console.log(name)
+                sessionStorage.setItem('loginName', input.value);
+                sessionStorage.setItem('isLoggedIn', 'true'); // Set the login flag
+                const encodedName = encodeURIComponent(input.value.trim());
+                // console.log(encodedName)
                 bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
-                window.location.href=`welcome-page.html?to=${name}`;
+                window.location.href=`welcome-page.html?to=${encodedName}`;
             } else {
                 alert('Incorrect password. Please try again.');
                 btn.restore();
