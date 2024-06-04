@@ -69,6 +69,7 @@
 
     <link rel="stylesheet" href="./css/app.css">
     <script src="./js/app.js" type="module" defer></script>
+    <script src="./js/util.js" type="module" defer></script>
 </head>
 
 <body>
@@ -111,6 +112,21 @@
     </div>
     
          
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (!isLoggedIn) {
+                alert('You must log in to access this page.');
+                window.location.href = 'index.html';
+            } else {
+            const loginName = sessionStorage.getItem('loginName');
+            if (loginName) {
+                util.guest();
+                // document.getElementById('guest-name').textContent = `Dear ${loginName}`;
+            }
+        }
+        });
+    </script>
     <!-- <script>
         history.pushState(null, null, window.location.href);
         history.back();
