@@ -72,7 +72,17 @@ export const util = (() => {
         
         //document.getElementById('form-name').value = name;
         guest.appendChild(div);
+
     };
+
+    // const setName = () => {
+    //     const name = (new URLSearchParams(window.location.search)).get('name');
+    //     const contactNameInput = document.getElementById('contactName');
+    
+    //     if (name) {
+    //         contactNameInput.value = decodeURIComponent(name);
+    //     }
+    // };
     
     const show = () => {
         guest();
