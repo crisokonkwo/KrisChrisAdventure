@@ -13,3 +13,6 @@ $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die(
 
 // User: foregqmx_chris
 // Database: foregqmx_messages
+
+https://ubuntu.com/server/docs/how-to-install-and-configure-php
+php -S 127.0.0.1:4000
