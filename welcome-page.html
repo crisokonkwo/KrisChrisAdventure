@@ -71,6 +71,14 @@
     <link rel="stylesheet" href="./css/app.css">
     <script src="./js/app.js" type="module" defer></script>
     <script src="./js/util.js" type="module" defer></script>
+
+    <script>
+        // Check if the user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            alert('You must log in to access this page.');
+            window.location.href = 'index.html'; // Redirect to login page
+        }
+    </script>
 </head>
 
 <body style="overflow-y: auto;">

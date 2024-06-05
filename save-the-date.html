@@ -81,6 +81,14 @@
     <script src="./js/theme.js" type="module" defer></script>
     <script src="./js/audio.js" type="module" defer></script>
 
+    <script>
+        // Check if the user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            alert('You must log in to access this page.');
+            window.location.href = 'index.html'; // Redirect to login page
+        }
+    </script>
+
     <style>
         textarea.form-control {
             height: 200px;
@@ -565,16 +573,10 @@
                 util.animation();
             }, 3000);
 
-            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-            if (!isLoggedIn) {
-                alert('You must log in to access this page.');
-                window.location.href = 'index.html';
-            } else {
-                const loginName = sessionStorage.getItem('loginName');
-                if (loginName) {
-                    document.getElementById('contactName').value = loginName;
-                }
-            }
+            
+            const loginName = sessionStorage.getItem('loginName');
+            document.getElementById('contactName').value = loginName;
+            
             const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
 
