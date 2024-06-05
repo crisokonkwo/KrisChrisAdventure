@@ -55,7 +55,7 @@ export const session = (() => {
                 // console.log(encodedName)
 
                 // Make an AJAX request to the server to store the loginName
-                const response = await fetch('https://foreverchrisandkris.com/connection.php', {
+                const response = await fetch('http://127.0.0.1:4000/connection.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -110,6 +110,15 @@ export const session = (() => {
         
     };
 
+    const showpass = () => {
+        const password = document.getElementById('loginPassword');
+        if (password.type === "password") {
+            password.type = "text";
+        } else {
+            password.type = "password"
+        }
+    };
+
     // const logout = () => {
     //     if (!confirm('Are you sure?')) {
     //         return;
@@ -120,7 +129,8 @@ export const session = (() => {
     // };
 
     return {
-        login
+        login,
+        showpass
         //logout
     };
 })();

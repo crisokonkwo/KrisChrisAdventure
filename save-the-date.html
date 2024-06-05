@@ -80,6 +80,18 @@
     <script src="./js/util.js" type="module" defer></script>
     <script src="./js/theme.js" type="module" defer></script>
     <script src="./js/audio.js" type="module" defer></script>
+
+    <style>
+        textarea.form-control {
+            height: 200px; /* Adjust height as needed */
+            resize: both; /* Allow users to resize the textarea */
+        }
+        
+        #successMessage {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
@@ -404,25 +416,26 @@
 
             <h1 class="text-center font-esthetic py-3" style="font-size: 2rem;">Contact</h1>
             <p class="text-center">Please provide your address in the message box so we can send you a formal invitation. Remember to press send.</p>
-            <form action="https://formspree.io/f/mzbnljpv" method="POST">
-        
+            <form id="contactForm" action="save-the-date.php" method="POST">
+                <!-- <form action="https://formspree.io/f/mzbnljpv" method="POST"> -->
                 <div class="mb-3">
                     <label for="contactName" class="contact-form__label">Name *</label>
                     <input type="text" class="form-control rounded-3" id="contactName" autocomplete="text" name="name" required>
                 </div>
                 <div class="mb-3">
                     <label class="contact-form__label">Email Address *</label>
-                    <input type="text" class="form-control rounded-3" name="email" placeholder="Please provide email address...">
+                    <input type="text" class="form-control rounded-3" name="email" placeholder="Please provide email address..." required>
                 </div>
                 <div class="mb-3">
                     <label class="contact-form__label">Message *</label>
-                    <textarea name="message" class="form-control rounded-3" placeholder="Your message..."></textarea>
+                    <textarea name="message" class="form-control rounded-3" placeholder="Your message..." rows="10" required></textarea>
                 </div>
                 <div class="contact-form__item">
                     <button type="submit" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">Send Message</button>
                 </div>
         
             </form>
+            <div id="successMessage" class="alert alert-success" style="display:none;">Form Submitted successfully.</div>
 
             <div class="position-relative">
                 <div class="position-absolute" style="top: 0%; left: 50%;">
@@ -551,6 +564,38 @@
                     document.getElementById('contactName').value = loginName;
                 }
             }
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(form);
+
+                fetch('save-the-date.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        successMessage.style.display = 'block';
+                        setTimeout(() => {
+                            successMessage.style.opacity = 1;
+                            setTimeout(() => {
+                                successMessage.style.opacity = 0;
+                                setTimeout(() => {
+                                    successMessage.style.display = 'none';
+                                    form.reset();
+                                }, 1000); // Time for the fade out transition
+                            }, 3000); // Time before starting the fade out
+                        }, 100); // Time for the fade in transition
+                    } else {
+                        alert('Failed to submit form. Please try again.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
         });
     </script>
 
