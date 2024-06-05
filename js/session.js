@@ -53,8 +53,25 @@ export const session = (() => {
                 sessionStorage.setItem('isLoggedIn', 'true'); // Set the login flag
                 const encodedName = encodeURIComponent(input.value.trim());
                 // console.log(encodedName)
-                bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
-                window.location.href=`welcome-page.html?to=${encodedName}`;
+
+                // Make an AJAX request to the server to store the loginName
+                const response = await fetch('http://127.0.0.1:4000/connection.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `loginName=${encodedName}`
+                });
+
+                if (response.ok) {
+                    bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
+                    window.location.href=`welcome-page.html?to=${encodedName}`;
+                } else {
+                    alert('Failed to store login name. Please contact me if you get this alert.');
+                    btn.restore();
+                    input.disabled = false;
+                    password.disabled = false;
+                }
             } else {
                 alert('Incorrect password. Please try again.');
                 btn.restore();
