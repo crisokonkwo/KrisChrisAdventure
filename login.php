@@ -30,4 +30,3 @@ if ($password === $correct_password) {
     header("Location: login.html?error=Incorrect%20password");
     exit();
 }
-?>

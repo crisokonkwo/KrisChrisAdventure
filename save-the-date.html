@@ -71,22 +71,24 @@
     <!-- Include AOS library -->
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-    
+
 
     <!-- App -->
     <link rel="stylesheet" href="./css/app.css">
     <script src="./js/savethedate.js" type="module" defer></script>
-    
+
     <script src="./js/util.js" type="module" defer></script>
     <script src="./js/theme.js" type="module" defer></script>
     <script src="./js/audio.js" type="module" defer></script>
 
     <style>
         textarea.form-control {
-            height: 200px; /* Adjust height as needed */
-            resize: both; /* Allow users to resize the textarea */
+            height: 200px;
+            /* Adjust height as needed */
+            resize: both;
+            /* Allow users to resize the textarea */
         }
-        
+
         #successMessage {
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -135,38 +137,39 @@
                   <span class="d-block" style="font-size: 0.7rem;">Comments</span>
               </a>
           </li> -->
-          <li class="nav-item">
-              <a class="nav-link" href="#contact-form">
-                  <i class="fa-solid fa-comments"></i>
-                  <span class="d-block" style="font-size: 0.7rem;">Contact</span>
-              </a>
-          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact-form">
+                    <i class="fa-solid fa-comments"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Contact</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main class="bg-dark text-light" data-bs-spy="scroll" data-bs-target="#navbar-menu"
         data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
-        
+
         <!-- Home -->
         <section class="container" id="home">
-            
+
             <div class="text-center pt-4">
                 <!-- Header -->
-            <header>
-                <div class="color-theme-white btn-outline-light ">
-                    <a href="#" >
-                        <picture>
-                            <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
+                <header>
+                    <div class="color-theme-white btn-outline-light ">
+                        <a href="#">
+                            <picture>
+                                <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
                             <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
-                            <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62" alt="Logo" onclick="util.modal(this)">
-                          </picture>
-                        
-                    </a>
-                </div>
-            </header>
+                                <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
+                                    alt="Logo" onclick="util.modal(this)">
+                            </picture>
+
+                        </a>
+                    </div>
+                </header>
                 <h1 class="font-esthetic my-4" style="font-size: 2.5rem;">Save The Date</h1>
-                
+
                 <div class="py-4">
                     <div class="img-crop border border-3 border-light shadow mx-auto">
                         <img src="./assets/images/bg.jpeg" alt="bg" onclick="util.modal(this)">
@@ -188,7 +191,8 @@
                 </div>
 
                 <p class="m-0">Scroll Down</p>
-                <a href="./assets/images/Wedding Save the Date.png" download="Chris and Kris Save the Date">Download and Print For Keepsake</a>
+                <a href="./assets/images/Wedding Save the Date.png" download="Chris and Kris Save the Date">Download and
+                    Print For Keepsake</a>
             </div>
         </section>
 
@@ -219,12 +223,13 @@
 
                 <!-- <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem"> As we journey through life together, our
                     story will always be filled with LOVE and FOREVER happiness. </h1> -->
-                
+
                 <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
                     Welcome to the start of our beautiful adventure, where our hearts join.
                 </h1>
                 <p style="font-size: 1.25rem;" class="px-2">
-                    As we journey through life together, our story will always be filled with LOVE and FOREVER happiness.
+                    As we journey through life together, our story will always be filled with LOVE and FOREVER
+                    happiness.
                 </p>
 
                 <!-- <p class="pb-3 px-3">
@@ -303,7 +308,7 @@
                 </div>
 
             </div>
-        
+
         </section>
 
         <!-- Wave Separator -->
@@ -412,50 +417,56 @@
             </path>
         </svg>
         <section class="dark-section bg-black" id="date">
-        <div class="container" id="contact-form">
+            <div class="container" id="contact-form">
 
-            <h1 class="text-center font-esthetic py-3" style="font-size: 2rem;">Contact</h1>
-            <p class="text-center">Please provide your address in the message box so we can send you a formal invitation. Remember to press send.</p>
-            <form id="contactForm" action="save-the-date.php" method="POST">
-                <!-- <form action="https://formspree.io/f/mzbnljpv" method="POST"> -->
-                <div class="mb-3">
-                    <label for="contactName" class="contact-form__label">Name *</label>
-                    <input type="text" class="form-control rounded-3" id="contactName" autocomplete="text" name="name" required>
-                </div>
-                <div class="mb-3">
-                    <label class="contact-form__label">Email Address *</label>
-                    <input type="text" class="form-control rounded-3" name="email" placeholder="Please provide email address..." required>
-                </div>
-                <div class="mb-3">
-                    <label class="contact-form__label">Message *</label>
-                    <textarea name="message" class="form-control rounded-3" placeholder="Your message..." rows="10" required></textarea>
-                </div>
-                <div class="contact-form__item">
-                    <button type="submit" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">Send Message</button>
-                </div>
-        
-            </form>
-            <div id="successMessage" class="alert alert-success" style="display:none;">Form Submitted successfully.</div>
+                <h1 class="text-center font-esthetic py-3" style="font-size: 2rem;">Contact</h1>
+                <p class="text-center">Please provide your address in the message box so we can send you a formal
+                    invitation. Remember to press send.</p>
+                <form id="contactForm" action="save-the-date.php" method="POST">
+                    <!-- <form action="https://formspree.io/f/mzbnljpv" method="POST"> -->
+                    <div class="mb-3">
+                        <label for="contactName" class="contact-form__label">Name *</label>
+                        <input type="text" class="form-control rounded-3" id="contactName" autocomplete="text"
+                            name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="contact-form__label">Email Address *</label>
+                        <input type="text" class="form-control rounded-3" name="email"
+                            placeholder="Please provide email address..." required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="contact-form__label">Message *</label>
+                        <textarea name="message" class="form-control rounded-3" placeholder="Your message..." rows="10"
+                            required></textarea>
+                    </div>
+                    <div class="contact-form__item">
+                        <button type="submit" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">Send
+                            Message</button>
+                    </div>
 
-            <div class="position-relative">
-                <div class="position-absolute" style="top: 0%; left: 50%;">
-                    <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50"
-                        onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398">
-                        </path>
-                    </svg>
+                </form>
+                <div id="successMessage" class="alert alert-success" style="display:none;">Form Submitted successfully.
                 </div>
+
+                <div class="position-relative">
+                    <div class="position-absolute" style="top: 0%; left: 50%;">
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                            class="opacity-50" onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+
             </div>
-        
-        </div>
-        
-        <!-- Wave Separator -->
-        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
-            <path fill="currentColor" fill-opacity="1"
-                d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-            </path>
-        </svg>
+
+            <!-- Wave Separator -->
+            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
+                <path fill="currentColor" fill-opacity="1"
+                    d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
+            </svg>
         </section>
     </main>
 
@@ -487,7 +498,7 @@
         </div>
     </footer>
 
-    
+
 
     <!-- Theme Button -->
     <button type="button" id="button-theme" title="Theme Button" style="display: none;"
@@ -534,12 +545,12 @@
     </div> -->
 
     <script>
-        
-        document.addEventListener("DOMContentLoaded", function() {
+
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('body').style.overflowY = 'scroll';
             AOS.init();
             theme.check();
-            
+
             document.getElementById('button-theme').style.display = 'block';
             audio.showButton();
             util.countDownDate();
@@ -550,8 +561,8 @@
                 zIndex: 1057,
             });
 
-            setTimeout(function (){
-                util.animation();  
+            setTimeout(function () {
+                util.animation();
             }, 3000);
 
             const isLoggedIn = sessionStorage.getItem('isLoggedIn');
@@ -567,7 +578,7 @@
             const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
 
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault(); // Prevent default form submission
 
                 const formData = new FormData(form);
@@ -576,25 +587,25 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        successMessage.style.display = 'block';
-                        setTimeout(() => {
-                            successMessage.style.opacity = 1;
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            successMessage.style.display = 'block';
                             setTimeout(() => {
-                                successMessage.style.opacity = 0;
+                                successMessage.style.opacity = 1;
                                 setTimeout(() => {
-                                    successMessage.style.display = 'none';
-                                    form.reset();
-                                }, 1000); // Time for the fade out transition
-                            }, 3000); // Time before starting the fade out
-                        }, 100); // Time for the fade in transition
-                    } else {
-                        alert('Failed to submit form. Please try again.');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+                                    successMessage.style.opacity = 0;
+                                    setTimeout(() => {
+                                        successMessage.style.display = 'none';
+                                        form.reset();
+                                    }, 1000); // Time for the fade out transition
+                                }, 3000); // Time before starting the fade out
+                            }, 100); // Time for the fade in transition
+                        } else {
+                            alert('Failed to submit form. Please try again.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
             });
         });
     </script>

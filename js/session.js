@@ -13,7 +13,7 @@ export const session = (() => {
 
     (new bootstrap.Modal('#loginModal')).show();
 
-    
+
 
     // if (session.get('token')?.split('.').length !== 3 || JSON.parse(atob(session.get('token').split('.')[1])).exp < (new Date()).getTime() / 1000) {
     //     // document.getElementById('welcome').innerHTML = `
@@ -39,7 +39,7 @@ export const session = (() => {
     // action="login.php" method="POST"
     const correctPassword = "chrisandkris25";
     const login = async (button) => {
-        
+
 
         const btn = util.disableButton(button, '<div class="spinner-border spinner-border-sm me-1" role="status"></div>Loading..');
         const input = document.getElementById('loginName');
@@ -65,7 +65,7 @@ export const session = (() => {
 
                 if (response.ok) {
                     bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
-                    window.location.href=`welcome-page.html?to=${encodedName}`;
+                    window.location.href = `welcome-page.html?to=${encodedName}`;
                 } else {
                     alert('Failed to store login name. Please contact me if you get this alert.');
                     btn.restore();
@@ -86,7 +86,7 @@ export const session = (() => {
         }
         // password: document.getElementById('loginPassword').value
         // bootstrap.Modal.getOrCreateInstance('#loginModal').hide();
-        
+
         // const res = await request(HTTP_POST, '/api/session')
         //     .body({
         //         email: document.getElementById('loginEmail').value,
@@ -107,7 +107,7 @@ export const session = (() => {
         //     comment.comment();
         // }
 
-        
+
     };
 
     const showpass = () => {
