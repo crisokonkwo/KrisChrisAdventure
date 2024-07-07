@@ -80,6 +80,7 @@
     <script src="./js/util.js" type="module" defer></script>
     <script src="./js/theme.js" type="module" defer></script>
     <script src="./js/audio.js" type="module" defer></script>
+    <script src="./js/images.js"></script>
 
     <script>
         // Check if the user is logged in
@@ -133,13 +134,13 @@
                     <span class="d-block" style="font-size: 0.7rem;">Venue</span>
                 </a>
             </li> -->
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#galeri">
+           <li class="nav-item">
+              <a class="nav-link" href="#gallery">
                   <i class="fa-solid fa-images"></i>
                   <span class="d-block" style="font-size: 0.7rem;">Gallery</span>
               </a>
           </li> 
-          <li class="nav-item">
+           <!-- <li class="nav-item">
               <a class="nav-link" href="#ucapan">
                   <i class="fa-solid fa-comments"></i>
                   <span class="d-block" style="font-size: 0.7rem;">Comments</span>
@@ -180,7 +181,7 @@
 
                 <div class="py-4">
                     <div class="img-crop border border-3 border-light shadow mx-auto">
-                        <img src="./assets/images/bg.jpeg" alt="bg" onclick="util.modal(this)">
+                        <img src="./assets/images/bg.JPG" alt="bg" onclick="util.modal(this)">
                     </div>
                 </div>
 
@@ -258,10 +259,10 @@
                 <div class="overflow-x-hidden">
                     <div data-aos="fade-right" data-aos-duration="2000">
                         <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/boy.png" alt="groom" onclick="util.modal(this)">
+                            <img src="./assets/images/boy.JPG" alt="groom" onclick="util.modal(this)">
                         </div>
                         <h1 class="font-esthetic" style="font-size: 3rem;">Christopher Okonkwo</h1>
-                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">Blah Blah...
+                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">Soon to be (another) Dr. Okonkwo, Chris is the smartest and most hardworking man I know. Spontaneous and adventurous, he makes life exciting whether we’re living in a camper van for a week or renovating a house for the first time. His dedication, one of the qualities I love most about him, is evident in everything he does—even in his unwavering support for Arsenal. Usually I’m fighting for his attention when Arsenal is playing a game. Whether he's cooking up a gourmet meal (often shared with our dog) or dancing in the grocery store, he's guaranteed to make you laugh. Chris is also the mastermind behind this website, built over several nights of dedication. He is my best friend and the reason I smile every day and I can’t wait to (finally) marry him!
                         </p>
                     </div>
 
@@ -289,16 +290,10 @@
                     </div>
                     <div data-aos="fade-left" data-aos-duration="2000">
                         <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/boy.png" alt="bride" onclick="util.modal(this)">
+                            <img src="./assets/images/girl.JPG" alt="bride" onclick="util.modal(this)">
                         </div>
                         <h1 class="font-esthetic" style="font-size: 3rem;">Kristin Pratt</h1>
-                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">The brilliant mathematician
-                            who’s Taylor Swift’s biggest fan—I sometimes think she loves Taylor more than me.
-                            She loves hiking and has a serious soft spot for animals. She dreams of becoming a
-                            veterinarian and rescuing any animal in sight, which is why I had to set a one-pet limit to
-                            prevent our home from turning into a mini zoo.
-                            Kristin’s adventurous spirit and unwavering support are the rock-solid foundation of our
-                            relationship, and I couldn’t ask for a better partner in crime.
+                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">The brilliant mathematician who’s might be Taylor Swift’s biggest fan—I sometimes think she loves Taylor more than me. She loves hiking and has a serious soft spot for animals. She dreams of becoming a veterinarian and rescuing any animal in sight, which is why we've set a one-pet limit to prevent our home from turning into a mini zoo. Honestly, if I had a dollar for every time we've turned the car around to help a slowpoke animal cross the road, we'd be retiring early. Kristin's genuine soul, adventurous spirit, and unwavering support are the rock-solid foundation of our relationship, and I couldn't ask for a better partner in crime. She’s like the calm after a storm, and I wouldn't trade her for the world.
                         </p>
                     </div>
                 </div>
@@ -389,8 +384,6 @@
                     <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
                         <h1 class="font-esthetic" style="font-size: 2rem;">Venue</h1>
                         <p><strong>OceanCliff</strong><br>
-                            65 Ridge Road <br>
-                            Newport, RI 02840</p>
                         <a href="https://maps.app.goo.gl/XE3eJz6BsJwpL7nQA" target="_blank"
                             class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
                             <i class="fa-solid fa-map-location-dot me-2"></i>Google Maps</a>
@@ -399,6 +392,7 @@
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021171.432415627!2d-76.00644823851898!3d42.313461588777116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e5a56ac50e5c2d%3A0x147532e165995636!2s65%20Ridge%20Rd%2C%20Newport%2C%20RI%2002840!5e0!3m2!1sen!2sus!4v1716907168412!5m2!1sen!2sus"
                             allowfullscreen>
                         </iframe> -->
+                        <br>65 Ridge Road<br>Newport, RI 02840</p>
                     </div>
                 </div>
             </div>
@@ -416,7 +410,55 @@
             </div>
         </div>
 
-
+        <section class="dark-section bg-black" id="gallery">
+            <div class="container pb-5 pt-4">
+            <div class="card-body border rounded-5 shadow p-3">
+            <h1 class="font-esthetic text-center py-3" data-aos="fade-down" data-aos-duration="1500" style="font-size: 2rem;">Gallery</h1>
+            <div id="carousel-image-one" data-aos="fade-up" data-aos-duration="1500" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators" id="carousel-indicators">
+                <!-- Indicators will be injected here -->
+            </div>
+            <div class="carousel-inner rounded-4" id="carousel-inner">
+                <!-- Carousel items will be injected here -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-image-one" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-image-one" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+            <div id="carousel-image-two" data-aos="fade-up" data-aos-duration="1500" class="carousel slide mt-4" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner rounded-4">
+            <div class="carousel-item active">
+            <img src="https://picsum.photos/1280/720?random=4" alt="gambar 4" class="d-block w-100" onclick="util.modal(this)">
+            </div>
+            <div class="carousel-item">
+            <img src="https://picsum.photos/1280/720?random=5" alt="gambar 5" class="d-block w-100" onclick="util.modal(this)">
+            </div>
+            <div class="carousel-item">
+            <img src="https://picsum.photos/1280/720?random=6" alt="gambar 6" class="d-block w-100" onclick="util.modal(this)">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-image-two" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel-image-two" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+            </div>
+            </div>
+            </div>
+            </section>
 
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-black">
