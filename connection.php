@@ -3,9 +3,9 @@
 $servername = "127.0.0.1";
 $port = 5522;
 $username = "foregqmx_chris";
-$password = "lit8ccb7xg9e92";
+$password = "pPDbFwlOrEIb";
 $dbname = "foregqmx_messages";
-
+// lit8ccb7xg9e92
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
