@@ -81,7 +81,7 @@
     </script>
 </head>
 
-<body style="overflow-y: auto;">
+<body onload="util.show()" style="overflow-y: auto;">
     <!-- Welcome Page -->
     <div class="loading-page" id="welcome" style="opacity: 1;">
         <div class="d-flex justify-content-center align-items-center" style="height: 90vh!important;">
@@ -101,24 +101,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Loading page -->
-    <div class="loading-page bg-black" id="loading" style="opacity: 1;">
-        <div class="d-flex justify-content-center align-items-center vh-100">
-            <div class="w-75 text-center">
-                <!-- <img class="img-fluid mb-3" src="./assets/images/icon-192x192.png" alt="icon" style="width: 3.5rem;"> -->
-                <div class="progress" role="progressbar" title="Loading Page" style="height: 0.5rem;">
-                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
-                </div>
-                <small class="mt-1 text-light" id="progress-info" style="display: none;">Loading asset</small>
-
-                <noscript>
-                    <small class="mt-1 text-danger">Sorry, this invitation requires javascript to work</small>
-                </noscript>
-            </div>
-        </div>
-    </div>
-
 
     <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {

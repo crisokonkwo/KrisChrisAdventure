@@ -1,8 +1,6 @@
 import { audio } from './audio.js';
 import { theme } from './theme.js';
-import { comment } from './comment.js';
 import { storage } from './storage.js';
-import { request, HTTP_GET } from './request.js';
 
 export const util = (() => {
 
@@ -86,8 +84,14 @@ export const util = (() => {
     
     const show = () => {
         guest();
-        opacity('loading', 0.025);
+        // opacity('loading', 0.025);
         window.scrollTo(0, 0);
+    };
+
+    const showDate = () => {
+        // guest();
+        opacity('loading', 0.025);
+        // window.scrollTo(0, 0);
     };
 
     const modal = (img) => {
@@ -232,6 +236,7 @@ export const util = (() => {
         open,
         copy,
         show,
+        showDate,
         modal,
         opacity,
         animate,

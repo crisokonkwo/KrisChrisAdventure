@@ -7,6 +7,9 @@ export const progress = (() => {
     const bar = document.getElementById('progress-bar');
 
     const total = assets.length;
+    console.log(total);
+    console.log(assets);
+    console.log(info);
     let loaded = 0;
 
     const progress = () => {
@@ -16,7 +19,8 @@ export const progress = (() => {
         info.innerText = `Loading assets (${loaded}/${total}) [${parseInt((loaded / total) * 100).toFixed(0)}%]`;
 
         if (loaded == total) {
-            util.show();
+            // util.show();
+            util.showDate();
         }
     };
 
