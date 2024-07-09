@@ -1,15 +1,18 @@
 import { util } from './util.js';
+import { audio } from './audio.js';
 
 export const progress = (() => {
 
     const assets = document.querySelectorAll('img');
     const info = document.getElementById('progress-info');
     const bar = document.getElementById('progress-bar');
-
+    
     const total = assets.length;
+
     console.log(total);
     console.log(assets);
     console.log(info);
+    
     let loaded = 0;
 
     const progress = () => {
@@ -21,6 +24,22 @@ export const progress = (() => {
         if (loaded == total) {
             // util.show();
             util.showDate();
+
+            if (window.location.pathname.includes('save-the-date.html')) {
+                setTimeout(function () {
+                    audio.play();
+                }, 1000);
+    
+                confetti({
+                    origin: { y: 1 },
+                    zIndex: 1057,
+                });
+    
+                setTimeout(function () {
+                    util.animation();
+                }, 3000);
+            }
+            
         }
     };
 

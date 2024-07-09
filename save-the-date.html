@@ -450,13 +450,15 @@
             </button>
             </div>
             <div id="carousel-image-two" data-aos="fade-up" data-aos-duration="1500" class="carousel slide mt-4" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <div class="carousel-indicators" id="carousel-indicators-2">
+                <!-- Indicators will be injected here -->
+            <!-- <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel-image-two" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
             </div>
-            <div class="carousel-inner rounded-4">
-            <div class="carousel-item active">
+            <div class="carousel-inner rounded-4" id="carousel-inner-2">
+                <!-- Carousel items will be injected here -->
+            <!-- <div class="carousel-item active">
             <img src="https://picsum.photos/1280/720?random=4" alt="gambar 4" class="d-block w-100" onclick="util.modal(this)">
             </div>
             <div class="carousel-item">
@@ -464,7 +466,7 @@
             </div>
             <div class="carousel-item">
             <img src="https://picsum.photos/1280/720?random=6" alt="gambar 6" class="d-block w-100" onclick="util.modal(this)">
-            </div>
+            </div> -->
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carousel-image-two" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -480,11 +482,11 @@
             </section>
 
         <!-- Wave Separator -->
-        <!-- <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-black">
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-black">
             <path fill="currentColor" fill-opacity="1"
-                d="M0,96L30,106.7C60,117,120,139,180,154.7C240,171,300,181,360,186.7C420,192,480,192,540,181.3C600,171,660,149,720,154.7C780,160,840,192,900,208C960,224,1020,224,1080,208C1140,192,1200,160,1260,138.7C1320,117,1380,107,1410,101.3L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+                d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
             </path>
-        </svg> -->
+        </svg>
         <!-- <section class="dark-section bg-black" id="date"> -->
             <div class="container" id="contact-form">
 
@@ -605,7 +607,7 @@
             <div class="modal-content rounded-4">
                 <div class="modal-body p-0">
                     <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
-                        <img src="./assets/images/bg.jpeg" class="w-100" alt="image" id="show-modal-image">
+                        <!-- <img src="./assets/images/bg.jpeg" class="w-100" alt="image" id="show-modal-image"> -->
                     </div>
                 </div>
             </div>
@@ -640,16 +642,16 @@
             document.getElementById('button-theme').style.display = 'block';
             audio.showButton();
             util.countDownDate();
-            audio.play();
+            // audio.play();
 
-            confetti({
-                origin: { y: 1 },
-                zIndex: 1057,
-            });
+            // confetti({
+            //     origin: { y: 1 },
+            //     zIndex: 1057,
+            // });
 
-            setTimeout(function () {
-                util.animation();
-            }, 3000);
+            // setTimeout(function () {
+            //     util.animation();
+            // }, 3000);
 
             
             const loginName = sessionStorage.getItem('loginName');
