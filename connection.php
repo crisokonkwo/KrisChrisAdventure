@@ -1,13 +1,20 @@
 <?php
+// Allow CORS
+header("Access-Control-Allow-Origin: https://www.foreverchrisandkris.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 // Database credentials
 $servername = "127.0.0.1";
-$port = 5522;
+$port = 3306;
 $username = "foregqmx_chris";
 $password = "lit8ccb7xg9e92";
 $dbname = "foregqmx_messages";
 // lit8ccb7xg9e92
+
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username, $password, $dbname);
+//$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
@@ -35,3 +42,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
+?>

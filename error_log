@@ -1,0 +1,30 @@
+[05-Jun-2024 06:46:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Connection refused in /home/foregqmx/public_html/wedding_website/connection.php:10
+Stack trace:
+#0 /home/foregqmx/public_html/wedding_website/connection.php(10): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/wedding_website/connection.php on line 10
+[08-Jul-2024 20:48:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'foregqmx_chris'@'localhost' (using password: YES) in /home/foregqmx/public_html/wedding_website/connection.php:15
+Stack trace:
+#0 /home/foregqmx/public_html/wedding_website/connection.php(15): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/wedding_website/connection.php on line 15
+[09-Jul-2024 21:19:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'foregqmx_chris'@'localhost' (using password: YES) in /home/foregqmx/public_html/save-the-date.php:15
+Stack trace:
+#0 /home/foregqmx/public_html/save-the-date.php(15): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/save-the-date.php on line 15
+[09-Jul-2024 21:19:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'foregqmx_chris'@'localhost' (using password: YES) in /home/foregqmx/public_html/save-the-date.php:15
+Stack trace:
+#0 /home/foregqmx/public_html/save-the-date.php(15): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/save-the-date.php on line 15
+[09-Jul-2024 21:19:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'foregqmx_chris'@'localhost' (using password: YES) in /home/foregqmx/public_html/save-the-date.php:15
+Stack trace:
+#0 /home/foregqmx/public_html/save-the-date.php(15): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/save-the-date.php on line 15
+[09-Jul-2024 21:22:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'foregqmx_chris'@'localhost' (using password: YES) in /home/foregqmx/public_html/save-the-date.php:15
+Stack trace:
+#0 /home/foregqmx/public_html/save-the-date.php(15): mysqli->__construct()
+#1 {main}
+  thrown in /home/foregqmx/public_html/save-the-date.php on line 15

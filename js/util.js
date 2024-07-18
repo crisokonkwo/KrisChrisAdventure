@@ -68,30 +68,15 @@ export const util = (() => {
         div.classList.add('m-2');
         div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-dark">${guest.getAttribute('data-message')}</p><h2 class="text-dark">${escapeHtml(name)}</h2>`;
         
-        //document.getElementById('form-name').value = name;
         guest.appendChild(div);
-
     };
-
-    // const setName = () => {
-    //     const name = (new URLSearchParams(window.location.search)).get('name');
-    //     const contactNameInput = document.getElementById('contactName');
-    
-    //     if (name) {
-    //         contactNameInput.value = decodeURIComponent(name);
-    //     }
-    // };
     
     const show = () => {
         guest();
-        // opacity('loading', 0.025);
-        window.scrollTo(0, 0);
     };
-
+    
     const showDate = () => {
-        // guest();
         opacity('loading', 0.025);
-        // window.scrollTo(0, 0);
     };
 
     const modal = (img) => {
@@ -177,59 +162,8 @@ export const util = (() => {
         })();
     };
 
-    // const storeConfig = async (token) => {
-    //     storage('session').set('token', token);
-
-    //     const config = storage('config');
-    //     return await request(HTTP_GET, '/api/config')
-    //         .token(token)
-    //         .then((res) => {
-    //             for (let [key, value] of Object.entries(res.data)) {
-    //                 config.set(key, value);
-    //             }
-
-    //             return res.code;
-    //         });
-    // };
-
-    // const opensavedate = async (button) => {
-    //     // opacity('welcome', 0.025);
-    //     // button.disabled = true;
-    //     window.location.href='save-the-date.html'
-    // }
-
     const open = async (button) => {
         window.location.href='save-the-date.html'
-        // document.querySelector('body').style.overflowY = 'scroll';
-        // AOS.init();
-        // theme.check();
-        
-        // document.getElementById('button-theme').style.display = 'block';
-        // audio.showButton();
-        // countDownDate();
-        // audio.play();
-
-        // // var scalar = 1;
-        // confetti({
-        //     origin: { y: 1 },
-        //     zIndex: 1057,
-        //     // scalar
-        // });
-
-        // setTimeout(function (){
-        //     animation();  
-        // }, 3000);
-
-        // if (localStorage.getItem('alertClosed')) {
-        //     document.getElementById('information').style.display = 'none';
-        // }
-        
-        // const token = document.querySelector('body').getAttribute('data-key');
-        // const status = await storeConfig(token);
-        // if (status === 200) {
-        //     animation();
-        //     comment.comment();
-        // }
     };
 
     return {
