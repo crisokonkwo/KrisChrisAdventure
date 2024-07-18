@@ -1,6 +1,6 @@
 <?php
 // Allow CORS
-header("Access-Control-Allow-Origin: https://www.foreverchrisandkris.com");
+header("Access-Control-Allow-Origin: https://crisokonkwo.github.io/KrisChrisAdventure/connection.php");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
