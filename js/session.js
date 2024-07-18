@@ -22,8 +22,8 @@ export const session = (() => {
                 const encodedName = encodeURIComponent(input.value.trim());
                 
                 // Make an AJAX request to the server to store the loginName
-                // const response = await fetch('https://foreverchrisandkris.com/connection.php', {
-                const response = await fetch('https://crisokonkwo.github.io/KrisChrisAdventure/connection.php', {
+                const response = await fetch('https://foreverchrisandkris.com/connection.php', {
+                // const response = await fetch('https://crisokonkwo.github.io/KrisChrisAdventure/connection.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
