@@ -1,14 +1,8 @@
 <?php
 // Allow CORS
-header("Access-Control-Allow-Origin: https://crisokonkwo.github.io/KrisChrisAdventure/connection.php");
+header("Access-Control-Allow-Origin: https://www.foreverchrisandkris.com");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
-// Handle preflight requests
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(204);
-    exit;
-}
 
 // Database credentials
 $servername = "127.0.0.1";
