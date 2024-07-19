@@ -4,4 +4,4 @@ _posts
 .jekyll-cache
 .jekyll-metadata
 vendor
-.php
+*.php
