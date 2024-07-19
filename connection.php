@@ -1,6 +1,6 @@
 <?php
 // Allow CORS from the specific origin
-header("Access-Control-Allow-Origin: https://www.foreverchrisandkris.com");
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
