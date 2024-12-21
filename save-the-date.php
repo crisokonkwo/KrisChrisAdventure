@@ -12,8 +12,8 @@ $password = "lit8ccb7xg9e92";
 $dbname = "foregqmx_messages";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// $conn = new mysqli($servername, $username, $password, $dbname, $port);
+// $conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 // Check connection
 if ($conn->connect_error) {
