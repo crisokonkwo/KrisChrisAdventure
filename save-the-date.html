@@ -70,13 +70,13 @@
     <script src="./js/savethedate.js" type="module" defer></script>
     <script src="./js/images.js" ></script>
 
-    <script>
+    <!-- <script>
         // Check if the user is logged in
         if (!sessionStorage.getItem('isLoggedIn')) {
             alert('You must log in to access this page.');
             window.location.href = 'index.html'; // Redirect to login page
         }
-    </script>
+    </script> -->
 
     <style>
         textarea.form-control {
@@ -99,9 +99,15 @@
     <nav class="container navbar bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menu">
         <ul class="navbar-nav nav-justified w-100 align-items-center">
             <li class="nav-item">
-                <a class="nav-link" href="#home">
+                <a class="nav-link" href="index.html">
                     <i class="fa-solid fa-house"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#date-maps">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Wedding</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -111,9 +117,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#date-maps">
+                <a class="nav-link" href="#events">
+                    <i class="fa-solid fa-user-group"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Events</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#travel">
                     <i class="fa-solid fa-calendar-check"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Date</span>
+                    <span class="d-block" style="font-size: 0.7rem;">Travel</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#activities">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Activities</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#registry">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Registry</span>
                 </a>
             </li>
             <!-- <li class="nav-item">
@@ -134,6 +158,11 @@
                   <span class="d-block" style="font-size: 0.7rem;">Comments</span>
               </a>
           </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="#rsvp">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">RSVP</span>
+                </a>
             <li class="nav-item">
                 <a class="nav-link" href="#contact-form">
                     <i class="fa-solid fa-comments"></i>
@@ -473,10 +502,80 @@
                 d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
             </path>
         </svg>
+
+
+        <!-- RSVP -->
+        <div class="container" id="rsvp">
+            <form id="rsvpForm" class="rsvpImage" action="/scripts/rsvp/" method="post">
+                <input type="hidden" name="sid" value="9051">
+				<input type="hidden" name="pid" value="85463">
+				<input type="hidden" name="rid" value="2">
+				<input type="hidden" name="email" value="">
+				<div style="display:none;"><input type="text" name="hpid" id="hpid"></div>
+
+                <h1 class="text-center font-esthetic" style="font-size: 2rem;">RVSP</h1>
+                <h2 class="text-center" style="font-size: .8rem;">Kindly Reply by March 1st</h2>
+
+                <div class="content formFields">
+                    <div class="group guest">
+                        <input required="" class="large" type="text" name="guests[0][name]" placeholder="Enter Guest Name">
+                            <div class="event">
+                                <h3></h3>
+                                <div class="selectWrap">
+                                    <select required="" name="guests[0][events][event1][response]" class="rsvpResponse">
+                                        <option value="">Will you be joining us?</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="selectWrap">	
+                                    <select name="guests[0][events][event1][meals]" class="hasPlaceholder" required="">
+                                        <option value="">Select your entrée</option>
+                                        <option value="Beef">Beef</option>
+                                        <option value="Fish">Fish</option>
+                                        <option value="Veg">Veg</option> 
+                                    </select> 
+                                </div>
+
+                                <textarea name="guests[0][events][event1][diet_restrictions]" placeholder="List any dietary restrictions" class="notRequired" style="overflow: hidden; resize: none; height: 45px;"></textarea>		
+								
+                                <div class="selectWrap">
+                                    <select name="guests[0][events][event1][transportation]" class="hasPlaceholder" required="">
+										<option value="">Will you take the provided transportation?</option>
+									    <option value="1">Yes</option>
+										<option value="0">No</option>
+									</select>
+								</div>
+							</div>
+						
+					</div>
+
+                    <a id="addGuest85463" class="addGuestBtn"><span class="icon add"></span><span class="text">Add Invited Guest</span><span class="icon sub"></span></a>
+					
+                    <div class="line"></div>
+
+                    <div class="group">
+                        <h3>I can't help but dance when I hear...</h3>
+                        <textarea name="customs[custom1][answer]" placeholder="make a song request" style="overflow: hidden; resize: none; height: 45px;"></textarea>
+                    </div>
+                    
+                    <button class="button rsvp" type="submit" value="Submit" name="submit"><span>Reply Now</span></button>
+                </div>
+            </form>
+
+        </div> 
+
+        <!-- Wave Separator -->
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
+            <path fill="currentColor" fill-opacity="1"
+                d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+
         <!-- <section class="dark-section bg-black" id="date"> -->
             <div class="container" id="contact-form">
 
-                <h1 class="text-center font-esthetic py-3" style="font-size: 2rem;">Contact</h1>
+                <h1 class="text-center font-esthetic" style="font-size: 2rem;">Contact</h1>
                 <p class="text-center">Please provide your address in the message box so we can send you a formal
                     invitation. Remember to press send.</p>
                 <form id="contactForm" action="save-the-date.php" method="POST">

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kris & Chris | Login Page</title>
+    <title>Kris & Chris | Welcome Page</title>
 
     <meta name="author" content="Chris">
     <meta name="title" content="Wedding Save The Date">
@@ -60,59 +60,34 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
 
-    <link rel="stylesheet" href="./css/login.css">
-    <script src="./js/login.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/app.css">
+    <!-- <link rel="stylesheet" href="./css/util.css">
+    <link rel="stylesheet" href="./css/progress.css"> -->
 
-    <style>
-        .modal-content {
-            background-color: rgba(255, 255, 255, 0.8);
-            /* Make modal content semi-transparent */
-        }
+    <script src="./js/app.js" type="module" defer></script>
+    <script src="./js/util.js" type="module" defer></script>
+    <!-- <script src="./js/progress.js" type="module" defer></script> -->
 
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Semi-transparent backdrop */
+    <!-- <script>
+        // Check if the user is logged in
+        if (!sessionStorage.getItem('isLoggedIn')) {
+            alert('You must log in to access this page.');
+            window.location.href = 'index.html'; // Redirect to login page
         }
-
-        #welcome,
-        #loading {
-            display: none;
-        }
-
-        .show-modal #welcome {
-            display: block !important;
-            /* Ensure welcome page is visible */
-        }
-    </style>
+    </script> -->
 </head>
 
-<body>
-    <!-- Modal login -->
-    <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="loginName" class="form-label"><i class="fa-solid fa-envelope me-1"></i>Name
-                                (required):</label>
-                            <input type="text" class="form-control rounded-3" id="loginName" placeholder="e.g. Christopher Okonkwo" autocomplete="text" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label"><i class="fa-solid fa-lock me-1"></i>Password (required):</label>
-                            <input type="password" class="form-control rounded-3" id="loginPassword" autocomplete="current-password" name="password" required>
-                            <input type="checkbox" title="Show Password" placeholder="show" onclick="session.showpass()"> Show Password
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary rounded-3" onclick="session.login(this)"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<body onload="util.show()" style="overflow-y: auto;">
+    <!-- Welcome Page -->
+    <div class="d-flex justify-content-center align-items-center full-height">
+        <div class="img_bg" id="welcome"></div>
+        <div class="textCont">
+            <h2>Thank You from the Bottom of Our Hearts</h2>
+            <div id="guest-name" data-message="Dear "></div>
+            <button type="button" class="btn_bg btn-accent btn-large_bg" onclick="util.open(this)">RSVP</button>
         </div>
     </div>
-
+    
     <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha256-CDOy6cOibCWEdsRiZuaHf8dSGGJRYuBGC+mjoJimHGw=" crossorigin="anonymous"></script>

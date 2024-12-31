@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kris & Chris | Welcome Page</title>
+    <title>Kris & Chris | Login Page</title>
 
     <meta name="author" content="Chris">
     <meta name="title" content="Wedding Save The Date">
@@ -60,58 +60,59 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
 
-    <link rel="stylesheet" href="./css/app.css">
-    <script src="./js/app.js" type="module" defer></script>
-    <script src="./js/util.js" type="module" defer></script>
-    <script src="./js/progress.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/login.js" type="module" defer></script>
 
-    <script>
-        // Check if the user is logged in
-        if (!sessionStorage.getItem('isLoggedIn')) {
-            alert('You must log in to access this page.');
-            window.location.href = 'index.html'; // Redirect to login page
+    <style>
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Make modal content semi-transparent */
         }
-    </script>
+
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent backdrop */
+        }
+
+        #welcome,
+        #loading {
+            display: none;
+        }
+
+        .show-modal #welcome {
+            display: block !important;
+            /* Ensure welcome page is visible */
+        }
+    </style>
 </head>
 
-<body onload="util.show()" style="overflow-y: auto;">
-    <!-- Welcome Page -->
-    <div class="loading-page" id="welcome" style="opacity: 1;">
-        <div class="d-flex justify-content-center align-items-center" style="height: 90vh!important;">
-            <div class="text-center">
-                <h1 class="font-esthetic mb-4" style="font-size: 2.5rem;">We are getting hitched...finally</h1>
-
-                <div class="img-crop border border-3 border-light shadow mb-4 mx-auto">
-                    <img src="./assets/images/bg1.jpg" alt="background" class="img-fluid">
+<body>
+    <!-- Modal login -->
+    <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginName" class="form-label"><i class="fa-solid fa-envelope me-1"></i>Name
+                                (required):</label>
+                            <input type="text" class="form-control rounded-3" id="loginName" placeholder="e.g. Christopher Okonkwo" autocomplete="text" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label"><i class="fa-solid fa-lock me-1"></i>Password (required):</label>
+                            <input type="password" class="form-control rounded-3" id="loginPassword" autocomplete="current-password" name="password" required>
+                            <input type="checkbox" title="Show Password" placeholder="show" onclick="session.showpass()"> Show Password
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-3" onclick="session.login(this)"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</button>
+                        </div>
+                    </form>
                 </div>
-
-                <h1 class="font-esthetic my-4" style="font-size: 2.5rem;">Kristin & Chris</h1>
-                <div id="guest-name" data-message="Dear "></div>
-
-                <button type="button" class="btn btn-light shadow rounded-4 mt-4" onclick="util.open(this)">
-                    <i class="fa-solid fa-envelope me-2"></i>Open Save The Date
-                </button>
             </div>
         </div>
     </div>
-    
-    <!-- Loading page -->
-    <div class="loading-page bg-black" id="loading" style="opacity: 1;">
-        <div class="d-flex justify-content-center align-items-center vh-100 !important;">
-            <div class="w-75 text-center">
-                <!-- <img class="img-fluid mb-3" src="./assets/images/icon-192x192.png" alt="icon" style="width: 3.5rem;"> -->
-                <div class="progress" role="progressbar" title="Loading Page" style="height: 0.5rem;">
-                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
-                </div>
-                <small class="mt-1 text-light" id="progress-info" style="display: none;">Loading asset</small>
 
-                <noscript>
-                    <small class="mt-1 text-danger">Sorry, this invitation requires javascript to work</small>
-                </noscript>
-            </div>
-        </div>
-    </div>
-    
     <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha256-CDOy6cOibCWEdsRiZuaHf8dSGGJRYuBGC+mjoJimHGw=" crossorigin="anonymous"></script>
