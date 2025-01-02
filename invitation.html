@@ -46,6 +46,15 @@
         integrity="sha256-pQBbLkFHcP1cy0C8IhoSdxlm0CtcH5yJ2ki9jjgR03c=" crossorigin="anonymous" as="script">
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.js"
         integrity="sha256-mvTaORw+RTgKnX6ZHT4P5Sc9DNP2TBpSGII7F3sT8iE=" crossorigin="anonymous" as="script">
+    
+    <!-- <link rel="stylesheet preload" href="https://use.typekit.net/vfi2nfp.css" type="text/css" media="all" as="style">
+    <link rel="stylesheet" href="/_css/global_style.css?20241209" type="text/css" media="all">
+    <link rel="stylesheet" href="/_css/preview_style.css?20241209" type="text/css" media="all">
+
+    <link rel="stylesheet" href="styles.css?1713386501" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
         integrity="sha256-WAgYcAck1C1/zEl5sBl5cfyhxtLgKGdpI3oKyJffVRI=" crossorigin="anonymous">
@@ -64,6 +73,7 @@
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- App -->
     <link rel="stylesheet" href="./css/app.css">
@@ -91,6 +101,18 @@
             transition: opacity 1s ease-in-out;
         }
     </style>
+
+    <script type="text/javascript">
+        function selectPlaceholder() {
+		var $this = $(this);
+		var val = $this.val();
+		if (val == '') {
+			$this.addClass('hasPlaceholder');
+		} else {
+			$this.removeClass('hasPlaceholder');
+		}
+	}
+    </script>
 </head>
 
 <body>
@@ -105,21 +127,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#date-maps">
+                <a class="nav-link" href="#events">
                     <i class="fa-solid fa-calendar-check"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Wedding</span>
+                    <span class="d-block" style="font-size: 0.7rem;">Events</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#bride">
                     <i class="fa-solid fa-user-group"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Bride & Groom</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#events">
-                    <i class="fa-solid fa-user-group"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Events</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -134,41 +150,47 @@
                     <span class="d-block" style="font-size: 0.7rem;">Activities</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#registry">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Registry</span>
-                </a>
-            </li>
+            
             <!-- <li class="nav-item">
                 <a class="nav-link" , href="#maps">
                     <i class="fa-solid fa-map-location-dot me-2"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Venue</span>
                 </a>
             </li> -->
-           <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="#gallery">
                   <i class="fa-solid fa-images"></i>
                   <span class="d-block" style="font-size: 0.7rem;">Gallery</span>
               </a>
-          </li> 
-           <!-- <li class="nav-item">
-              <a class="nav-link" href="#ucapan">
-                  <i class="fa-solid fa-comments"></i>
-                  <span class="d-block" style="font-size: 0.7rem;">Comments</span>
-              </a>
-          </li> -->
-            <li class="nav-item">
-                <a class="nav-link" href="#rsvp">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">RSVP</span>
+            </li> 
+            
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#ucapan">
+                    <i class="fa-solid fa-comments"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Comments</span>
                 </a>
+            </li> -->
+
             <li class="nav-item">
                 <a class="nav-link" href="#contact-form">
                     <i class="fa-solid fa-comments"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Contact</span>
                 </a>
             </li>
+          
+            <li class="nav-item">
+                <a class="nav-link" href="#registry">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Registry</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#rsvp">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">RSVP</span>
+                </a>
+            
         </ul>
     </nav>
 
@@ -176,24 +198,149 @@
     <main class="bg-dark text-light" data-bs-spy="scroll" data-bs-target="#navbar-menu"
         data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
 
+        <!-- Header -->
+        <header>
+            <div class="color-theme-white btn-outline-light ">
+                <a href="#">
+                    <picture>
+                        <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
+                    <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
+                        <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
+                            alt="Logo" onclick="util.modal(this)">
+                    </picture>
+
+                </a>
+            </div>
+        </header>
+
+        <!-- Date -->
+        <!-- <section class="dark-section bg-black" id="date"> -->
+
+            <div class="container" id="events">
+                <div class="text-center" id="date">
+    
+                    <h1 class="font-esthetic py-3" style="font-size: 2rem;">Please join us as we walk down the aisle</h1>
+                    <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
+    
+                        <!-- Date and Time -->
+                        <div class="row justify-content-center" data-time="2025-04-13 16:30:00" id="count-down">
+                            <div class="col-3 p-1">
+                                <h2 class="d-inline m-0 p-0" id="day">0</h2><small
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Day</small>
+                            </div>
+                            <div class="col-3 p-1">
+                                <h2 class="d-inline m-0 p-0" id="hour">0</h2><small
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Hour</small>
+                            </div>
+                            <div class="col-3 p-1">
+                                <h2 class="d-inline m-0 p-0" id="minute">0</h2><small
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Minute</small>
+                            </div>
+                            <div class="col-3 p-1">
+                                <h2 class="d-inline m-0 p-0" id="second">0</h2><small
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Second</small>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- <p style="font-size: 1.0rem;" class="mt-4 py-2">
+                        Please mark your calendars and save the date for our wedding! <br>A formal invitation will
+                        follow soon.
+                    </p> -->
+
+                    <p class="mb-0" style="font-size: 1.5rem;">Sunday, 13 April 2025</p>
+    
+                    <!-- Love animation -->
+                    <div class="position-relative">
+                        <div class="position-absolute" style="top: 0%; right: 10%;">
+                            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                                class="opacity-50" onload="util.animate(this, 3000, 'animate-love')" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
+                        <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
+                            <p><strong>OceanCliff Hotel</strong><br>
+                            <a href="https://maps.app.goo.gl/XE3eJz6BsJwpL7nQA" target="_blank"
+                                class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                                <i class="fa-solid fa-map-location-dot me-2"></i>Google Maps</a>
+                            <!-- <iframe width="1000" height="450" frameborder="0" style="border:0"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021171.432415627!2d-76.00644823851898!3d42.313461588777116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e5a56ac50e5c2d%3A0x147532e165995636!2s65%20Ridge%20Rd%2C%20Newport%2C%20RI%2002840!5e0!3m2!1sen!2sus!4v1716907168412!5m2!1sen!2sus"
+                                allowfullscreen>
+                            </iframe> -->
+                            <br>65 Ridge Road, Newport, RI 02840</p>
+
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12 leftcol" data-aos="fade-right" data-aos-duration="1500">
+                                <h1 class="font-esthetic" style="font-size: 2rem;">Ceremony</h1>
+                                <p>4:30 in the Afternoon (EST) <br>
+                                    OceanCliff Ballroom <br> (Outdoor if weather permits)
+                                </p>
+                            </div>
+
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1500">
+                                <h1 class="font-esthetic" style="font-size: 2rem;">Reception</h1>
+                                <p>6:30 in the Evening (EST) <br> OceanCliff Ballroom & Reception Rooms</p>
+                            </div>
+                            
+                            <!-- <div class="divider"></div> Faint line in the middle -->
+                            <h1 class="font-esthetic py-3" style="font-size: 2rem;">Join us for a lovely rehearsal dinner</h1>
+
+                            <p class="mb-0" style="font-size: 1.5rem;">Saturday, 12 April 2025 <br> 4:30 PM - 12:00 AM (EST)</p>
+
+                            <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
+                                <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
+                                    <p><strong>Onephelm</strong><br>
+                                    <a href="https://maps.app.goo.gl/XE3eJz6BsJwpL7nQA" target="_blank"
+                                        class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                                        <i class="fa-solid fa-map-location-dot me-2"></i>Google Maps</a>
+                                    <!-- <iframe width="1000" height="450" frameborder="0" style="border:0"
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021171.432415627!2d-76.00644823851898!3d42.313461588777116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e5a56ac50e5c2d%3A0x147532e165995636!2s65%20Ridge%20Rd%2C%20Newport%2C%20RI%2002840!5e0!3m2!1sen!2sus!4v1716907168412!5m2!1sen!2sus"
+                                        allowfullscreen>
+                                    </iframe> -->
+                                    <br>65 Ridge Road, Newport, RI 02840</p>
+        
+                                </div>
+                            </div>
+                            
+                        </div>
+
+
+                        <!-- Button to trigger modal -->
+                        <div class="row section-padding py-1 d-flex justify-content-center align-items-center">
+                            <div class="col-md-4 col-md-offset-4 text-center">
+                                <a data-bs-toggle="modal" data-bs-target="#dc-modal" 
+                                class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
+                                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress Code
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Scroll Animation -->
+                        <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
+                            <div class="mouse-animation border border-2">
+                                <div class="scroll-animation"></div>
+                            </div>
+                        </div>
+                        <!-- <p class="mb-0" style="font-size: .8rem;">Scroll Down</p> -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- </section> -->
+
         <!-- Home -->
-        <section class="container" id="home">
+        <!-- <section class="container" id="home">
 
             <div class="text-center pt-4">
-                <!-- Header -->
-                <header>
-                    <div class="color-theme-white btn-outline-light ">
-                        <a href="#">
-                            <picture>
-                                <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
-                            <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
-                                <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
-                                    alt="Logo" onclick="util.modal(this)">
-                            </picture>
-
-                        </a>
-                    </div>
-                </header>
+                
                 <h1 class="font-esthetic my-4" style="font-size: 2.5rem;">Save The Date</h1>
 
                 <div class="py-4">
@@ -220,7 +367,7 @@
                 <a href="./assets/images/SaveTheDate.png" download="KrisChris-SaveTheDate">Download and
                     Print For Keepsake</a>
             </div>
-        </section>
+        </section> -->
 
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-black">
@@ -336,83 +483,7 @@
             </path>
         </svg>
 
-        <!-- Date -->
-        <!-- <section class="dark-section bg-black" id="date"> -->
-
-        <div class="container" id="date-maps">
-            <div class="text-center" id="date">
-
-                <h1 class="font-esthetic py-3" style="font-size: 2rem;">Our Adventure Begins in</h1>
-                <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
-
-                    <!-- Date and Time -->
-                    <div class="row justify-content-center" data-time="2025-04-13 16:30:00" id="count-down">
-                        <div class="col-3 p-1">
-                            <h2 class="d-inline m-0 p-0" id="day">0</h2><small
-                                class="ms-1 me-0 my-0 p-0 d-inline">Day</small>
-                        </div>
-                        <div class="col-3 p-1">
-                            <h2 class="d-inline m-0 p-0" id="hour">0</h2><small
-                                class="ms-1 me-0 my-0 p-0 d-inline">Hour</small>
-                        </div>
-                        <div class="col-3 p-1">
-                            <h2 class="d-inline m-0 p-0" id="minute">0</h2><small
-                                class="ms-1 me-0 my-0 p-0 d-inline">Minute</small>
-                        </div>
-                        <div class="col-3 p-1">
-                            <h2 class="d-inline m-0 p-0" id="second">0</h2><small
-                                class="ms-1 me-0 my-0 p-0 d-inline">Second</small>
-                        </div>
-                    </div>
-                </div>
-
-                <p style="font-size: 1.0rem;" class="mt-4 py-2">
-                    Please mark your calendars and save the date for our wedding! <br>A formal invitation will
-                    follow soon.
-                </p>
-                <p class="mb-0" style="font-size: 1.5rem;">Sunday, 13 April 2025</p>
-
-                <!-- Love animation -->
-                <div class="position-relative">
-                    <div class="position-absolute" style="top: 0%; right: 10%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                            class="opacity-50" onload="util.animate(this, 3000, 'animate-love')" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- <div class="overflow-x-hidden">
-                  <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
-                      <h1 class="font-esthetic" style="font-size: 2rem;">Ceremony</h1>
-                      <p>Date</p>
-                  </div>
-
-                  <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
-                      <h1 class="font-esthetic" style="font-size: 2rem;">Reception</h1>
-                      <p>Date</p>
-                  </div>
-              </div> -->
-
-                <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
-                    <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
-                        <h1 class="font-esthetic" style="font-size: 2rem;">Venue</h1>
-                        <p><strong>OceanCliff</strong><br>
-                        <a href="https://maps.app.goo.gl/XE3eJz6BsJwpL7nQA" target="_blank"
-                            class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">
-                            <i class="fa-solid fa-map-location-dot me-2"></i>Google Maps</a>
-                        <!-- <iframe width="1000" height="450" frameborder="0" style="border:0"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021171.432415627!2d-76.00644823851898!3d42.313461588777116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e5a56ac50e5c2d%3A0x147532e165995636!2s65%20Ridge%20Rd%2C%20Newport%2C%20RI%2002840!5e0!3m2!1sen!2sus!4v1716907168412!5m2!1sen!2sus"
-                            allowfullscreen>
-                        </iframe> -->
-                        <br>65 Ridge Road<br>Newport, RI 02840</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- </section> -->
+        
 
         <div class="position-relative">
             <div class="position-absolute" style="top: 0%; left: 5%;">
@@ -505,65 +576,195 @@
 
 
         <!-- RSVP -->
-        <div class="container" id="rsvp">
-            <form id="rsvpForm" class="rsvpImage" action="/scripts/rsvp/" method="post">
-                <input type="hidden" name="sid" value="9051">
-				<input type="hidden" name="pid" value="85463">
-				<input type="hidden" name="rid" value="2">
-				<input type="hidden" name="email" value="">
-				<div style="display:none;"><input type="text" name="hpid" id="hpid"></div>
+        <section class="rsvp" id="rsvp">
+            <!-- action="save-the-date.php" method="POST" -->
+                <!-- <form id="rsvp285463" class="rsvpImage" action="/scripts/rsvp/" method="post"> -->
+                <form id="rsvp285463" class="rsvpImage" action="save-the-date.php" method="POST">
+                
+                    <input type="hidden" name="sid" value="9051">
+                    <input type="hidden" name="pid" value="85463">
+                    <input type="hidden" name="rid" value="2">
+                    <input type="hidden" name="email" value="">
+                    <div style="display:none;"><input type="text" name="hpid" id="hpid"></div>
 
-                <h1 class="text-center font-esthetic" style="font-size: 2rem;">RVSP</h1>
-                <h2 class="text-center" style="font-size: .8rem;">Kindly Reply by March 1st</h2>
-
-                <div class="content formFields">
-                    <div class="group guest">
-                        <input required="" class="large" type="text" name="guests[0][name]" placeholder="Enter Guest Name">
-                            <div class="event">
-                                <h3></h3>
-                                <div class="selectWrap">
-                                    <select required="" name="guests[0][events][event1][response]" class="rsvpResponse">
-                                        <option value="">Will you be joining us?</option>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                    </select>
-                                </div>
-                                <div class="selectWrap">	
-                                    <select name="guests[0][events][event1][meals]" class="hasPlaceholder" required="">
-                                        <option value="">Select your entrée</option>
-                                        <option value="Beef">Beef</option>
-                                        <option value="Fish">Fish</option>
-                                        <option value="Veg">Veg</option> 
-                                    </select> 
-                                </div>
-
-                                <textarea name="guests[0][events][event1][diet_restrictions]" placeholder="List any dietary restrictions" class="notRequired" style="overflow: hidden; resize: none; height: 45px;"></textarea>		
-								
-                                <div class="selectWrap">
-                                    <select name="guests[0][events][event1][transportation]" class="hasPlaceholder" required="">
-										<option value="">Will you take the provided transportation?</option>
-									    <option value="1">Yes</option>
-										<option value="0">No</option>
-									</select>
-								</div>
-							</div>
-						
-					</div>
-
-                    <a id="addGuest85463" class="addGuestBtn"><span class="icon add"></span><span class="text">Add Invited Guest</span><span class="icon sub"></span></a>
-					
-                    <div class="line"></div>
-
-                    <div class="group">
-                        <h3>I can't help but dance when I hear...</h3>
-                        <textarea name="customs[custom1][answer]" placeholder="make a song request" style="overflow: hidden; resize: none; height: 45px;"></textarea>
+                    <div class="text-center">
+                        <h1 class="font-esthetic" style="font-size: 2rem;">RSVP</h1>
+                        <p id="note85463" style="font-size: .8rem;">Kindly respond by <strong>April 1, 2025</strong></p>
                     </div>
-                    
-                    <button class="button rsvp" type="submit" value="Submit" name="submit"><span>Reply Now</span></button>
-                </div>
-            </form>
 
-        </div> 
+                    <div class="line"></div>
+                    
+                    <div class="content formFields">
+                        <div class="group guest">
+                            <input required class="large form-control" type="text" name="guests[0][name]" placeholder="Enter Guest Name">
+                                <div class="event">
+                                    <h3>The Wedding</h3>
+                                    <div class="selectWrap">
+                                        <select name="guests[0][events][event1][response]" class="rsvpResponse hasPlaceholder form-control" required="">
+                                            <option value="">Will you be joining us?</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                    <div class="selectWrap">	
+                                        <select name="guests[0][events][event1][meals]" class="hasPlaceholder form-control" required="">
+                                            <option value="">Select your entrée</option>
+                                            <option value="Beef">Beef</option>
+                                            <option value="Fish">Fish</option>
+                                            <option value="Veg">Veg</option> 
+                                        </select> 
+                                    </div>
+                                    <div class="selectWrap">
+                                        <select name="guests[0][events][event1][transportation]" class="hasPlaceholder form-control" required="">
+                                            <option value="">Will you take the provided transportation?</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                    <div class="event">
+                                        <h3>The Night Before - Rehearsal Dinner</h3>
+                                        <div class="selectWrap">
+                                            <select required="" name="guests[0][events][event2][response]" class="rsvpResponse hasPlaceholder form-control">
+                                                <option value="">Will you be joining us?</option>
+                                                <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <textarea name="guests[0][events][event1][diet_restrictions]" placeholder="Please list any dietary restrictions" class="notRequired form-control" style="overflow: hidden; resize: none; height: 45px; margin-top: 32px;"></textarea>		
+                                    
+                                    
+                                
+                            
+                        </div>
+
+                        <!-- class="btn btn-sm rounded-pill shadow-sm mb-2 px-3 btn-outline-dark" -->
+                        
+                        <a id="addGuest85463" class="addGuestBtn">
+                            <span class="icon add"></span>
+                            <span class="text">Add Invited Guest</span>
+                            <span class="icon sub"></span>
+                        </a>
+                        
+                        <div class="line"></div>
+
+                        <div class="group">
+                            <h3>I can't help but dance when I hear...</h3>
+                            <textarea name="customs[custom1][answer]" placeholder="make a song request" class="form-control" style="overflow: hidden; resize: none; height: 45px;"></textarea>
+                        </div>
+                        
+                        <button class="btn btn-large rounded-pill shadow-sm px-3 btn-outline-dark button rsvp" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button>
+                    </div>
+                </form>
+
+            <!-- RSVP scripts -->
+            <script type="text/javascript">
+                function openForm85463() {
+                    $('#rsvp285463 .formFields').slideDown(400).next('.confirmBox').remove();
+                    $('#rsvp285463 button[type="submit"]').prop('disabled', false);
+                }
+
+                let confirmationButtonLink = '';
+                var newGroup = $('#addGuest85463').prev('.group').clone();
+                var num = 0;
+
+                function resetRSVP_reqEvent(i,e) {
+                    $(e).change(function(e) {
+                        var groupClass = ($(this).closest('.group').hasClass('guestbook')) ? '.group' : '.event';
+                        var eventReqFields = $(this).closest(groupClass).find('input:not(.notRequired), select:not(.rsvpResponse):not(.notRequired), textarea:not(.notRequired)');
+                        if (this.value == '1') {
+                            eventReqFields.prop('required', true);
+                            // resetInvalidEvents($(this).closest('form'));
+                        } else {
+                            eventReqFields.prop('required', false);
+                            // resetInvalidEvents($(this).closest('form'));
+                        }
+                    });
+                }
+                $('.rsvpResponse').each(resetRSVP_reqEvent);
+
+                $('#addGuest85463 .add').click(function() {
+                    $this = $(this).parent();
+                    num = num + 1;
+                    var newGuest = newGroup.clone();
+                    //newGuest.find('input:not(.radio)').val('');
+                    newGuest.find('input, select, textarea').each(function() {
+                        nameVal = $(this).attr('name');
+                        nameNewVal = nameVal.replace('guests[0]', 'guests[' + num + ']');
+                        $(this).attr('name', nameNewVal);
+                    });
+                    newGuest.find('input.radio').each(function() {
+                        idVal = $(this).attr('id');
+                        forVal = $(this).next('label').attr('for');
+                        idNewVal = idVal.replace('yes0', 'yes' + num).replace('no0', 'no' + num);
+                        forNewVal = forVal.replace('yes0', 'yes' + num).replace('no0', 'no' + num);
+                        $(this).attr('id', idNewVal);
+                        $(this).next('label').attr('for', forNewVal);
+                    });
+                    newGuest.find('select').on('change', selectPlaceholder);
+                    newGuest.find('.rsvpResponse').each(resetRSVP_reqEvent);
+                    //console.log(newGuest);
+                    $this.before(newGuest.hide());
+                    $this.prev('.group').slideDown(400);
+                    if (num > 0) {
+                        $this.find('.sub').addClass('on');
+                    } else {
+                        $this.find('.sub').removeClass('on');
+                    }
+                    // resetInvalidEvents($this.closest('form'));
+                });
+                
+                $('#addGuest85463 .sub').click(function() {
+                    $this = $(this).parent();
+                    num = num - 1;
+                    $this.prev('.group').slideUp(400, function() {
+                        $(this).remove();
+                        if (num < 1) {
+                            $this.find('.sub').removeClass('on');
+                        }
+                        // resetInvalidEvents($this.closest('form'));
+                    });
+                });
+                
+                function confirmBox85463(fieldCont) {
+                    fieldCont.find('.formFields').slideUp(400).after('<div class="content confirmBox"><h3 style="text-align:center;">Thank you for your reply.</h3><div class="buttonCont">' + confirmationButtonLink + '</div><a class="button rsvp" rel="nofollow" onclick="openForm85463()"><span>Change my RSVP</span></a></div>');
+                    setTimeout(function() {
+                        $(window).resize();
+                    }, 600);
+                }
+                
+                $('#rsvp285463').submit(function(e) {
+                    e.preventDefault();
+                    var $this = $(this);
+                    $this.find('button[type="submit"]').prop('disabled', true);
+                    var url = $this.attr('action');
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        dataType: 'json',
+                        data: $this.serialize()
+                    }).fail(function(jqXHR, textStatus){
+                        $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
+                        $this.find('button[type="submit"]').prop('disabled', false);
+                    }).done(function(data) {
+                        if (data.success) {
+                            confirmBox85463($this);
+                            var destination = $this.offset().top - (headerHeight() + 20);
+                            TweenLite.to('html, body', 0.4, {scrollTop: destination, delay: 0.4, ease: Power3.easeOut});
+                        } else {
+                            $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
+                            $this.find('button[type="submit"]').prop('disabled', false);
+                        }
+                    });
+                });
+                // resetInvalidEvents($('#rsvp285463'));
+            
+            </script>
+                
+        </section>
 
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
@@ -686,6 +887,43 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- <div class="modal fade" id="dc-modal" tabindex="-1" aria-labelledby="dc-modalLabel" aria-hidden="true"> -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close">x</button>
+                <div class="modal-body">
+                    <h5>Rehearsal/Cocktail Night</h5>
+                    <p>
+                        <strong>Casual</strong>
+                        <br>
+                        A semi-formal look that is contemporary &amp; fashionable which is not too prim &amp; proper is the best
+                        to pull off this night. You can see some pins for
+                        <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-women/">ladies</a>
+                        &amp; <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-men/">gents</a>.
+                    </p>
+                    <h5>Wedding Day</h5>
+                    <p>
+                        <strong>Cocktail/Semi-Formal</strong>
+                        <br>
+                        Ladies can flaunt their unconventional sarees,
+                        <a href="https://www.pinterest.com/ramswarooppatra/indo-western-lehengas/">lehengas</a>,
+                        <a href="https://www.pinterest.com/ramswarooppatra/indo-western-anarkalis/">anarkalis</a>,
+                        dresses and the list
+                        goes on whereas gentlemen can wear any kind of suit or just blazer. If you don't like to wear a
+                        suit/blazer, you can do a <a href="https://www.pinterest.com/ramswarooppatra/high-neck-jackets-for-men/">high-neck
+                        (band gala) waistcoat &amp; shirt</a> combo.
+                    </p>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Image Large -->
     <div class="modal fade" id="modal-image" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -778,6 +1016,8 @@
         });
     </script>
 
+    
+
     <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha256-CDOy6cOibCWEdsRiZuaHf8dSGGJRYuBGC+mjoJimHGw=" crossorigin="anonymous"></script>
@@ -787,5 +1027,4 @@
         integrity="sha256-mvTaORw+RTgKnX6ZHT4P5Sc9DNP2TBpSGII7F3sT8iE=" crossorigin="anonymous"></script>
 
 </body>
-
 </html>

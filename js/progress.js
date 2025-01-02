@@ -25,7 +25,7 @@ export const progress = (() => {
             // util.show();
             util.showDate();
 
-            if (window.location.pathname.includes('save-the-date.html')) {
+            if (window.location.pathname.includes('invitation.html')) {
                 setTimeout(function () {
                     audio.play();
                 }, 1000);

@@ -163,7 +163,7 @@ export const util = (() => {
     };
 
     const open = async (button) => {
-        window.location.href='save-the-date.html'
+        window.location.href='invitation.html#rsvp'
     };
 
     return {

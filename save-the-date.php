@@ -22,20 +22,22 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+    echo json_encode(["success" => false, "message" => "Method Not Allowed"]);
 
-    $stmt = $conn->prepare("INSERT INTO saveTheDate (name, email, message) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $email, $message);
+    // $name = $_POST['name'];
+    // $email = $_POST['email'];
+    // $message = $_POST['message'];
 
-    if ($stmt->execute()) {
-        echo json_encode(["success" => true, "message" => "Form submitted successfully."]);
-    } else {
-        echo json_encode(["success" => false, "message" => "Failed to submit form."]);
-    }
+    // $stmt = $conn->prepare("INSERT INTO saveTheDate (name, email, message) VALUES (?, ?, ?)");
+    // $stmt->bind_param("sss", $name, $email, $message);
 
-    $stmt->close();
+    // if ($stmt->execute()) {
+    //     echo json_encode(["success" => true, "message" => "Form submitted successfully."]);
+    // } else {
+    //     echo json_encode(["success" => false, "message" => "Failed to submit form."]);
+    // }
+
+    // $stmt->close();
 } else {
     echo json_encode(["success" => false, "message" => "Method Not Allowed"]);
 }
