@@ -65,9 +65,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
         integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4=" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap"> -->
 
     <!-- Include AOS library -->
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
@@ -113,37 +113,121 @@
 		}
 	}
     </script>
+
+    <script>
+        $(document).ready(function() {
+            isSingleNav = $('#navContent').hasClass('singleNav');
+
+            var nav = false;
+
+            function closeNav() {
+                var navItemsLen = $('#navContent nav a').length;
+                $('#navContent nav a').each(function(i,e) {
+                    setTimeout(function() {$('#navContent nav a').eq(navItemsLen - i).removeClass('active')}, i * 100);
+                }).promise().done(function() {
+                    $('#navContent').removeClass('active').fadeOut('fast', function() {
+                        $('#mm').removeClass('closeNav');
+                        nav = false;
+                    });
+                });
+		    }
+
+            $('#mm').click(function() {
+                //scrollT = $(window).scrollTop();
+                if (nav) {
+                    closeNav();
+                } else {
+                    //$('nav').css('top', scrollT);
+                    $('#navContent').fadeIn('fast', function() {
+                        $(this).addClass('active');
+                        $('#mm').addClass('closeNav');
+                        if (!$(this).hasClass('split')) {
+                            var topScroll = $(window).scrollTop();
+                            ($(window).height() >= $('body').height()) ? $(this).height($(window).height()) : $(this).height($('body').height() + headerHeight());
+                            $('#navContent nav').css('top', topScroll + ($(window).height() * 0.09));
+                        }
+                        setTimeout(function() {
+                            $('#navContent nav a').each(function(i,e) {
+                                setTimeout(function() {$(e).addClass('active')}, i * 100);
+                            });
+                        }, 200);
+                        nav = true;
+                    });
+                }
+		    });
+            $('#navContent').click(function() {
+			    closeNav();
+		    });
+        });
+    </script>
 </head>
 
 <body>
+    <!-- Navbar Top -->
+    <div id="navContent" class="split singleNav" style="display: none;">
+		<div class="bgBox" style="background-color: rgba(255,255,255,0.8)"></div>
+        <nav>
+			<div class="navScroll">
+                <!-- <a href="home" class="navItem active select" rel="nofollow">HOME</a> -->
+                <a href="p50526" class="navItem" rel="nofollow">EVENTS</a>
+                <a href="p50527" class="navItem" rel="nofollow">TRAVEL</a>
+                <a href="p50529" class="navItem" rel="nofollow">ACTIVITIES</a>
+                <a href="p50530" class="navItem" rel="nofollow">REGISTRY</a>
+                <a href="p50532" class="navItem" rel="nofollow">GALLERY</a>
+                <a href="p50528" class="navItem" rel="nofollow">RSVP</a>
+            </div>
+        </nav>
+	</div>
+
+    <!-- Header -->
+    <header>
+        <div class="color-theme-white btn-outline-light ">
+            <a href="#">
+                <picture>
+                    <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
+                <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
+                    <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
+                        alt="Logo" onclick="util.modal(this)">
+                </picture>
+
+            </a>
+        </div>
+    </header>
+
+    <div id="MMlinkCont" style="height: 73.6016px;">
+        <div id="mm" class></div>
+    </div>
 
     <!-- Navbar Bottom -->
     <nav class="container navbar bg-dark navbar-expand fixed-bottom rounded-top-4 p-0" id="navbar-menu">
         <ul class="navbar-nav nav-justified w-100 align-items-center">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fa-solid fa-house"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Home</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="#events">
                     <i class="fa-solid fa-calendar-check"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Events</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#bride">
-                    <i class="fa-solid fa-user-group"></i>
-                    <span class="d-block" style="font-size: 0.7rem;">Bride & Groom</span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#travel">
                     <i class="fa-solid fa-calendar-check"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Travel</span>
                 </a>
             </li>
+
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#bride">
+                    <i class="fa-solid fa-user-group"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">Bride & Groom</span>
+                </a>
+            </li> -->
+            
             <li class="nav-item">
                 <a class="nav-link" href="#activities">
                     <i class="fa-solid fa-calendar-check"></i>
@@ -171,12 +255,12 @@
                 </a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#contact-form">
                     <i class="fa-solid fa-comments"></i>
                     <span class="d-block" style="font-size: 0.7rem;">Contact</span>
                 </a>
-            </li>
+            </li> -->
           
             <li class="nav-item">
                 <a class="nav-link" href="#registry">
@@ -190,30 +274,25 @@
                     <i class="fa-solid fa-calendar-check"></i>
                     <span class="d-block" style="font-size: 0.7rem;">RSVP</span>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#faq">
+                    <i class="fa-solid fa-comments"></i>
+                    <span class="d-block" style="font-size: 0.7rem;">FAQ</span>
+                </a>
+            </li>
             
         </ul>
     </nav>
 
     <!-- Main Content -->
     <main class="bg-dark text-light" data-bs-spy="scroll" data-bs-target="#navbar-menu"
-        data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+        data-bs-root-margin="0px 0px -40%" style="margin-top: 73.6016px;" data-bs-smooth-scroll="true" tabindex="0">
 
-        <!-- Header -->
-        <header>
-            <div class="color-theme-white btn-outline-light ">
-                <a href="#">
-                    <picture>
-                        <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
-                    <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
-                        <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
-                            alt="Logo" onclick="util.modal(this)">
-                    </picture>
+        
 
-                </a>
-            </div>
-        </header>
-
-        <!-- Date -->
+        <!-- Events -->
         <!-- <section class="dark-section bg-black" id="date"> -->
 
             <div class="container" id="events">
@@ -230,15 +309,15 @@
                             </div>
                             <div class="col-3 p-1">
                                 <h2 class="d-inline m-0 p-0" id="hour">0</h2><small
-                                    class="ms-1 me-0 my-0 p-0 d-inline">Hour</small>
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Hrs</small>
                             </div>
                             <div class="col-3 p-1">
                                 <h2 class="d-inline m-0 p-0" id="minute">0</h2><small
-                                    class="ms-1 me-0 my-0 p-0 d-inline">Minute</small>
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Min</small>
                             </div>
                             <div class="col-3 p-1">
                                 <h2 class="d-inline m-0 p-0" id="second">0</h2><small
-                                    class="ms-1 me-0 my-0 p-0 d-inline">Second</small>
+                                    class="ms-1 me-0 my-0 p-0 d-inline">Sec</small>
                             </div>
                         </div>
                     </div>
@@ -277,22 +356,25 @@
                         </div>
 
                         <div class="row align-items-center">
-                            <div class="py-1 col-md-6 col-sm-12 col-xs-12 leftcol" data-aos="fade-right" data-aos-duration="1500">
-                                <h1 class="font-esthetic" style="font-size: 2rem;">Ceremony</h1>
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-duration="1500">
+                                <h1 class="font-esthetic py-2" style="font-size: 1.5rem;">Ceremony</h1>
                                 <p>4:30 in the Afternoon (EST) <br>
                                     OceanCliff Ballroom <br> (Outdoor if weather permits)
                                 </p>
                             </div>
 
-                            <div class="py-1 col-md-6 col-sm-12 col-xs-12 rightcol" data-aos="fade-left" data-aos-duration="1500">
-                                <h1 class="font-esthetic" style="font-size: 2rem;">Reception</h1>
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-duration="1500">
+                                <h1 class="font-esthetic py-2" style="font-size: 1.5rem;">Reception</h1>
                                 <p>6:30 in the Evening (EST) <br> OceanCliff Ballroom & Reception Rooms</p>
                             </div>
                             
                             <!-- <div class="divider"></div> Faint line in the middle -->
-                            <h1 class="font-esthetic py-3" style="font-size: 2rem;">Join us for a lovely rehearsal dinner</h1>
+                            <h1 class="font-esthetic py-3" style="font-size: 2rem; margin-top: 10px;">Join us for a lovely rehearsal dinner</h1>
 
-                            <p class="mb-0" style="font-size: 1.5rem;">Saturday, 12 April 2025 <br> 4:30 PM - 12:00 AM (EST)</p>
+                            <p class="mb-0" style="font-size: 1.5rem;">
+                                Saturday, 12 April 2025 </p>
+                            <p class="mb-0"> 4:30 PM - 12:00 AM (EST) </p>
+                            
 
                             <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
                                 <div class="py-1" data-aos="fade-left" data-aos-duration="1500">
@@ -376,97 +458,95 @@
             </path>
         </svg>
 
-        <!-- Bride and Groom info -->
-        <section class="dark-section bg-black" id="bride">
+        <!-- Travel -->
+        <section class="dark-section bg-white" id="travel">
 
             <div class="container text-center pt-4">
-                <!-- <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem"> Welcome to the start of our beautiful
-                    adventure, where our hearts join. </h1> -->
+                <h1 class="font-esthetic py-3 px-2" style="font-size: 2rem"> 
+                    Travel Tips & Accomadation 
+                </h1>
 
                 <!-- Love animation -->
                 <div class="position-relative">
                     <div class="position-absolute" style="top: 0%; right: 10%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                            class="opacity-50" onload="util.animate(this, 500, 'animate-love')" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50 animate-love" onload="util.animate(this, 500, 'animate-love')" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"></path>
                         </svg>
                     </div>
                 </div>
 
-                <!-- <h1 class="font-esthetic py-4 px-2" style="font-size: 2rem"> As we journey through life together, our
-                    story will always be filled with LOVE and FOREVER happiness. </h1> -->
-
-                <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
-                    Welcome to the start of our beautiful adventure, where our hearts join.
-                </h1>
                 <p style="font-size: 1.25rem;" class="px-2">
-                    As we journey through life together, our story will always be filled with LOVE and FOREVER
-                    happiness.
+                    We are excited to celebrate our special day with you! Below are some travel tips and accomadation
+                    information to help you plan your trip.
                 </p>
 
-                <!-- <p class="pb-3 px-3">
-                    With great respect, we cordially invite you and your family to celebrate our wedding:
-                </p> -->
+                <div class="row justify-content-center align-items-center">
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-duration="1500">
+                        <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Travel</h2>
+                        <p class="px-2">
+                            <strong>By Air:</strong> The nearest airport is T.F. Green Airport (PVD) in Providence, RI.
+                            <br>
+                                <a href="https://www.google.com/travel/flights/" target="_blank"
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Find Flights</a>
+                            <br>
+                            <strong>By Car:</strong> OceanCliff Hotel is located at 65 Ridge Road, Newport, RI 02840.
+                            <br>
+                            <a href="https://www.uber.com/" target="_blank"
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Book Uber</a>
+                            <br>
+                            <strong>By Train:</strong> The nearest Amtrak station is in Kingston, RI (KIN).
+                            <br>
+                            <a href="https://www.amtrak.com/home.html" target="_blank"
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Book Train</a>
+                        </p>
+                    </div>
+
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-duration="1500">
+                        <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Hotels</h2>
+                        <p class="px-2">
+                            We have room blocks at the Residence Inn Newport Middletown and Newport Marriott. Please use the links below for reservation:
+                            <br>
+                            <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1734628137646&key=GRP&guestreslink2=true&app=resvlink" target="_blank"
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Book Residence Inn</a>
+                            <a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1733424293293&key=GRP&guestreslink2=true&app=resvlink" target="_blank"
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Book Marriott</a>
+                            <br>
+                            <strong>Other Options:</strong> There are several other hotels and inns in the area.
+                            <br>    
+                            <a data-bs-toggle="modal" data-bs-target="#pdf-modal" 
+                                        class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                            <i class="fa fa-file-pdf"></i>View Other Hotels</a>
+                            <br>
+                            <!-- <embed src="./assets/other_hotels.pdf" type="application/pdf" width="100%" height="600px" /> -->
+                            Stay with us at the OceanCliff Hotel
+                            <br>
+                            <a href="https://www.newportexperience.com/venues/oceancliff/guestrooms-at-oceancliff/" target="_blank"
+                                            class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                            <i></i>Book OceanCliff Hotel</a>
+                            
+                        </p>
+                    </div>
+                </div>
 
                 <!-- Love animation -->
                 <div class="position-relative">
                     <div class="position-absolute" style="top: 0%; left: 10%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                            class="opacity-50" onload="util.animate(this, 2000, 'animate-love')" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50 animate-love" onload="util.animate(this, 2000, 'animate-love')" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"></path>
                         </svg>
-                    </div>
-                </div>
-                <div class="overflow-x-hidden">
-                    <div data-aos="fade-left" data-aos-duration="2000">
-                        <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/girl.JPG" alt="bride" onclick="util.modal(this)">
-                        </div>
-                        <h1 class="font-esthetic" style="font-size: 3rem;">Kristin Pratt</h1>
-                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">The brilliant mathematician who’s might be Taylor Swift’s biggest fan—I sometimes think she loves Taylor more than me. She loves hiking and has a serious soft spot for animals. She dreams of becoming a veterinarian and rescuing any animal in sight, which is why we've set a one-pet limit to prevent our home from turning into a mini zoo. Honestly, if I had a dollar for every time we've turned the car around to help a slowpoke animal cross the road, we'd be retiring early. Kristin's genuine soul, adventurous spirit, and unwavering support are the rock-solid foundation of our relationship, and I couldn't ask for a better partner in crime. She’s like the calm after a storm, and I wouldn't trade her for the world.
-                        </p>
-                    </div>
-                    <div class="position-relative">
-                        <div class="position-absolute" style="top: 0%; right: 10%;">
-                            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                                class="opacity-50" onload="util.animate(this, 3000, 'animate-love')"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </div>
-                    </div>
-                    <h1 class="font-esthetic my-4" style="font-size: 4rem;">&</h1>
-
-                    <div class="position-relative">
-                        <div class="position-absolute" style="top: 0%; left: 10%;">
-                            <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                                class="opacity-50" onload="util.animate(this, 2000, 'animate-love')"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div data-aos="fade-right" data-aos-duration="2000">
-                        <div class="img-crop border border-3 border-light shadow my-auto mx-auto">
-                            <img src="./assets/images/boy.JPG" alt="groom" onclick="util.modal(this)">
-                        </div>
-                        <h1 class="font-esthetic" style="font-size: 3rem;">Christopher Okonkwo</h1>
-                        <p class="py-2 px-4 mx-2 mb-4" style="font-size: 1.25rem;">Soon to be (another) Dr. Okonkwo, Chris is the smartest and most hardworking man I know. Spontaneous and adventurous, he makes life exciting whether we’re living in a camper van for a week or renovating a house for the first time. His dedication, one of the qualities I love most about him, is evident in everything he does—even in his unwavering support for Arsenal. Usually I’m fighting for his attention when Arsenal is playing a game. Whether he's cooking up a gourmet meal (often shared with our dog) or dancing in the grocery store, he's guaranteed to make you laugh. Chris is also the mastermind behind this website, built over several nights of dedication. He is my best friend and the reason I smile every day and I can’t wait to (finally) marry him!
-                        </p>
                     </div>
                 </div>
 
                 <!-- Ballon animation -->
                 <div class="position-relative">
                     <div class="position-absolute" style="top: 0%; right: 5%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                            class="opacity-50" onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398">
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="opacity-50 animate-love" onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398">
                             </path>
                         </svg>
                     </div>
@@ -483,7 +563,38 @@
             </path>
         </svg>
 
-        
+        <!-- Bride and Groom info -->
+        <div class="container" id="contact-form">
+            <div class="container text-center pt-4">
+
+                <!-- Love animation -->
+                <div class="position-relative">
+                    <div class="position-absolute" style="top: 0%; right: 10%;">
+                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                            class="opacity-50" onload="util.animate(this, 500, 'animate-love')" viewBox="0 0 16 16">
+                            <path
+                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                        </svg>
+                    </div>
+                </div>
+
+                <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
+                    Activities
+                </h1>
+                <p style="font-size: 1.25rem;" class="px-2">
+                    As we journey through life together, our story will always be filled with LOVE and FOREVER
+                    happiness.
+                </p>
+
+                </div>  
+         </div> 
+
+        <!-- Wave Separator -->
+        <!-- <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-black">
+            <path fill="currentColor" fill-opacity="1"
+                d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+            </path>
+        </svg> -->
 
         <div class="position-relative">
             <div class="position-absolute" style="top: 0%; left: 5%;">
@@ -766,70 +877,65 @@
                 
         </section>
 
-        <!-- Wave Separator -->
-        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
-            <path fill="currentColor" fill-opacity="1"
-                d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-white">
+            <path fill="currentColor" fill-opacity="1" d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
             </path>
         </svg>
 
-        <!-- <section class="dark-section bg-black" id="date"> -->
-            <div class="container" id="contact-form">
-
-                <h1 class="text-center font-esthetic" style="font-size: 2rem;">Contact</h1>
-                <p class="text-center">Please provide your address in the message box so we can send you a formal
-                    invitation. Remember to press send.</p>
-                <form id="contactForm" action="save-the-date.php" method="POST">
-                    <!-- <form action="https://formspree.io/f/mzbnljpv" method="POST"> -->
-                    <div class="mb-3">
-                        <label for="contactName" class="contact-form__label">Name *</label>
-                        <input type="text" class="form-control rounded-3" id="contactName" autocomplete="text"
-                            name="name" required>
+        <!-- FAQ -->
+        <section class="dark-section bg-black" id="faq">
+            <div class="container text-center pt-4">
+                <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
+                    FAQ
+                </h1>
+                <div class="justify-content-center align-items-center">
+                    
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500">
+                        <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Will the ceremony be outside?</p>
+                        <p>Yes! Please bring a light jacket just in case there is weather on the day.</p>
+                        <hr class="mt-3 mb-2">                           
                     </div>
-                    <div class="mb-3">
-                        <label class="contact-form__label">Email Address *</label>
-                        <input type="text" class="form-control rounded-3" name="email"
-                            placeholder="Please provide email address..." required>
+                    <!-- end sectionCont -->
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500">
+                        <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Are children allowed at the ceremony?</p>
+                        <p>We kindly ask that your children do not attend the ceremony but we can't wait to see them at the reception!</p>
+                        <hr class="mt-3 mb-2">
                     </div>
-                    <div class="mb-3">
-                        <label class="contact-form__label">Message *</label>
-                        <textarea name="message" class="form-control rounded-3" placeholder="Your message..." rows="10"
-                            required></textarea>
+                    <!-- end sectionCont -->
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500">                   
+                        <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Can I take photos during the ceremony?</p>
+                        <p>We kindly ask that there are no phones &amp; cameras during our wedding ceremony.</p>
+                        <hr class="mt-3 mb-2">    
                     </div>
-                    <div class="contact-form__item">
-                        <button type="submit" class="btn btn-outline-light btn-sm rounded-pill shadow-sm mb-2 px-3">Send
-                            Message</button>
+                    <!-- end sectionCont -->
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade-right" data-aos-duration="1500">                    
+                        <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Will there be parking available?</h3>
+                        <p>There will be plenty of parking available as well as valet. Please plan to arrive early if you need to park.</p>
+                        <hr class="mt-3 mb-2">
                     </div>
-
-                </form>
-                <div id="successMessage" class="alert alert-success" style="display:none;">Form Submitted successfully.
+                    <!-- end sectionCont -->
+                    <div class="py-1 col-md-6 col-sm-12 col-xs-12 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500">
+                        <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Will there be vegetarian options?</p>
+                        <p>Yes! We will have a variety of options to meet everyones dietary needs. </p>                             
+                    </div>
+                    <!-- end sectionCont -->                                                    
                 </div>
-
-                <div class="position-relative">
-                    <div class="position-absolute" style="top: 0%; left: 50%;">
-                        <svg xmlns="https://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                            class="opacity-50" onload="util.animate(this, 1500, 'animate-love')" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063q.068.062.132.129.065-.067.132-.129c3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3 3 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398">
-                            </path>
-                        </svg>
-                    </div>
-                </div>
-
             </div>
+            
 
-            <!-- Wave Separator -->
-            <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1400 320" class="color-theme-white">
-                <path fill="currentColor" fill-opacity="1"
-                    d="M0,160L48,144C96,128,192,96,288,106.7C384,117,480,171,576,165.3C672,160,768,96,864,96C960,96,1056,160,1152,154.7C1248,149,1344,75,1392,37.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                </path>
-            </svg>
-        <!-- </section> -->
+        </section>
+
+        <!-- Wave Separator -->
+        <!-- <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-black">
+            <path fill="currentColor" fill-opacity="1" d="M0,192L40,181.3C80,171,160,149,240,149.3C320,149,400,171,480,165.3C560,160,640,128,720,128C800,128,880,160,960,186.7C1040,213,1120,235,1200,218.7C1280,203,1360,149,1400,122.7L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z">
+            </path>
+        </svg> -->
+        
     </main>
 
     <!-- Footer Save the Date -->
     <footer class="bg-black">
-        <div class="container">
+        <div class="container" style="margin-top: 40px;">
             <div class="text-center">
 
                 <p style="font-size: 0.9rem;" class="pt-2 pb-1 px-2" data-aos="fade-up" data-aos-duration="1500">
@@ -854,8 +960,6 @@
             </div>
         </div>
     </footer>
-
-
 
     <!-- Theme Button -->
     <button type="button" id="button-theme" title="Theme Button" style="display: none;"
@@ -924,6 +1028,18 @@
         </div>
     </div>
 
+    <!-- PDF Modal -->
+    <div id="pdf-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close">x</button>
+                <div class="modal-body">
+                    <iframe src="./assets/other_hotels.pdf" frameborder="0" style="width: 100%; height: 80vh;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Image Large -->
     <div class="modal fade" id="modal-image" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -938,26 +1054,7 @@
         </div>
     </div>
 
-    <!-- Modal structure -->
-    <!-- <div class="modal fade" id="modal-image" tabindex="-1" role="dialog" aria-labelledby="modalImageLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalImageLabel">Image Preview</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img id="show-modal-image" src="" class="img-fluid" alt="Modal Image">
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('body').style.overflowY = 'scroll';
             AOS.init();
@@ -1015,8 +1112,6 @@
             });
         });
     </script>
-
-    
 
     <!-- Dependencies JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
