@@ -6,21 +6,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kris & Chris | Save The Date</title>
+    <title>Kris & Chris | Invitation</title>
 
     <meta name="author" content="Chris">
-    <meta name="title" content="Wedding Save The Date">
-    <meta name="description" content="Kristin and Christopher's Wedding Save The Date" />
+    <meta name="title" content="Wedding invitation">
+    <meta name="description" content="Kristin and Christopher's Wedding invitation" />
     <meta property="og:title" content="Kris & Chris" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:description" content="Wedding Save The Date" />
+    <meta property="og:description" content="Wedding invitation" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://foreverchrisandkris.com/" />
     <meta property="og:site_name" content="Kris & Chris" />
 
     <!-- Appearance -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Wedding Save The Date">
+    <meta name="apple-mobile-web-app-title" content="Wedding invitation">
     <meta name="color-scheme" content="dark">
     <link rel="canonical" href="https://foreverchrisandkris.com/">
     <link rel="shortcut icon" type="image/x-icon" href="https://foreverchrisandkris.com/favicon.ico">
@@ -115,8 +115,153 @@
     </script>
 
     <script>
+        var headerH;
+        var newSection;
+
+        var changeHistory = false;
+        var page = 'home';
+        var siteTitle = 'Kris & Chris';
+        // var siteURL = 'https://foreverchrisandkris.com';
+        var siteURL = 'http://localhost:8000/';
+        var startPage = 'home';
+        var isSingleNav = false;
+        var initload = true;
+        var coverpage = false;
+        var newPage, $thisMenuItem;
+        window.loaded = true;
+
+        function headerHeight() {
+            headerH = $('header').height();
+            headerPT = Number($('header').css('padding-top').slice(0,-2));
+            headerPB = Number($('header').css('padding-bottom').slice(0,-2));
+            headerH = headerH + headerPB + headerPT;
+            return headerH;
+        }
+
+        function scrollToSection(t) {
+            let newSection = (t == '') ? 'home' : t.replace(/\S+#/, '');
+            headerH = headerHeight();
+            $('section.' + newSection).show();
+            // sizeVideo();
+            // if (collage) {
+            //     $('.gallery-collage').filter(':visible').each(function(i,e) {
+            //         galleryAreaW = $(e).width();
+            //         positionImgs($(e),galleryAreaW);
+            //     })
+            // }
+            if (t == 'index.html') {
+                console.log('OK');
+                console.log(siteURL);
+                window.location.href = siteURL;
+            } else {
+                let destination = $('section.' + newSection).offset().top - headerH;
+                $('html, body').animate({ scrollTop: destination, delay: 0.2, ease:$thisMenuItem.attr('ease') });
+            }
+        }
+
+        // process internal internal navigation
+        function internalNav(i,e) {
+                $(e).click(function(evt) {
+                    evt.preventDefault();
+                    $thisMenuItem = $(this);
+                    initload = false;
+                    if (isSingleNav) {
+                        loadPageSingle($thisMenuItem.attr('href'));
+                    } 
+                    // else {
+                    //     loadPage($thisMenuItem.attr('href'));
+                    //     //scrollToSection($thisMenuItem.attr('href'));
+                    // }
+                });
+        }
+
+        function loadPageSingle(t) {
+                console.log(t);
+                newPage = (t == '') ? startPage : t.replace(/\S+#/, '');
+                console.log(newPage);
+                $thisMenuItem = $('a[href="' + newPage + '"]').eq(0);
+                console.log($thisMenuItem);
+                title = ($thisMenuItem) ? $thisMenuItem.text() : '';
+                console.log(title);
+                $('#navContent .navItem').removeClass('select');
+                $thisMenuItem.addClass('select');
+                if (window.loaded) {
+                    console.log('loaded');
+                    console.log(newPage);
+                    scrollToSection(newPage);
+                } else {
+                    console.log('not loaded');
+                    // window.loaded = true;
+                    // console.log(newPage);
+                    // scrollToSection(newPage);
+                }
+                
+                if (!changeHistory && newPage != 'home') {
+                    window.history.pushState({set: newPage, title: siteTitle + ' | ' + title}, siteTitle + ' | ' + title, siteURL + '#' + newPage);
+                    $('title').text(siteTitle + ' | ' + title);
+                } else if (!changeHistory) {
+                    window.history.pushState({set: newPage, title: siteTitle}, siteTitle, siteURL);
+                    $('title').text(siteTitle);
+                }
+                changeHistory = false;
+                page = newPage;
+        }
+
+        // function loadPage(t) {
+            //     newPage = (t == '') ? startPage : t.replace(/\S+#/, '');
+            //     $thisMenuItem = $('a[href="' + newPage + '"]').eq(0);
+            //     title = ($thisMenuItem) ? $thisMenuItem.text() : '';
+            //     $('#navContent .navItem').removeClass('select');
+            //     $thisMenuItem.addClass('select');
+            //     $('footer').fadeOut(400);
+            //     $('section' + '.' + page).fadeOut(400, function() {
+            //         $('header, footer').removeClass(page).removeClass('coverpage');
+            //         $('section.' + newPage).fadeIn('fast', function() {
+            //             if ($(this).hasClass('gallery-collage')) {
+            //                 positionImgs($(this),$(this).width());
+            //             }
+            //             $('footer').fadeIn('fast', function() {
+            //                 setMinHeight(headerHeight(), footerHeight());
+            //             });
+            //             $('section.' + newPage).css('margin-top', headerHeight());
+            //             sizeVideo();
+            //             calculateSpace();
+            //             TweenLite.to('html, body', 0.6, {scrollTop: 0, delay: 0.2, ease: Power3.easeOut});
+            //         });
+            //         coverpage = ($('section.' + newPage).hasClass('coverpage')) ? true : false;
+            //         if (coverpage) {
+            //             $('header, footer').addClass(newPage + ' coverpage');
+            //             if ($('section.' + newPage).hasClass('header')) {
+            //                 $('header').removeClass('cover bottom').addClass('header');
+            //             } else if ($('section.' + newPage).hasClass('bottom')) {
+            //                 $('header').removeClass('cover header').addClass('bottom');
+            //             } else {
+            //                 $('header').removeClass('header bottom').addClass('cover');
+            //             }
+            //         } else {
+            //             $('header, footer').addClass(newPage);
+            //         }
+                    
+            //         if (!changeHistory && newPage != 'home') {
+            //             window.history.pushState({set: newPage, title: siteTitle + ' | ' + title}, siteTitle + ' | ' + title, siteURL + '#' + newPage);
+            //             $('title').text(siteTitle + ' | ' + title);
+            //         } else if (!changeHistory) {
+            //             window.history.pushState({set: newPage, title: siteTitle}, siteTitle, siteURL);
+            //             $('title').text(siteTitle);
+            //         }
+            //         changeHistory = false;
+            //         page = newPage;
+            //     });
+        // }
+
         $(document).ready(function() {
             isSingleNav = $('#navContent').hasClass('singleNav');
+
+            // $('textarea').autogrow({
+			//     context: $(this).closest('section'),
+			//     fixMinHeight: true,
+			//     onInitialize: true
+		    // });
 
             var nav = false;
 
@@ -158,6 +303,10 @@
             $('#navContent').click(function() {
 			    closeNav();
 		    });
+
+            // processes click for navigation items
+		    $('.navItem').each(internalNav);
+
         });
     </script>
 </head>
@@ -166,36 +315,59 @@
     <!-- Navbar Top -->
     <div id="navContent" class="split singleNav" style="display: none;">
 		<div class="bgBox" style="background-color: rgba(255,255,255,0.8)"></div>
-        <nav>
+        <nav class="bg-dark">
 			<div class="navScroll">
                 <!-- <a href="home" class="navItem active select" rel="nofollow">HOME</a> -->
                 <a href="index.html" class="navItem" rel="nofollow">HOME</a>
-                <a href="#events" class="navItem" rel="nofollow">EVENTS</a>
-                <a href="#travel" class="navItem" rel="nofollow">TRAVEL</a>
-                <a href="#rsvp" class="navItem" rel="nofollow">RSVP</a>
-                <a href="#faq" class="navItem" rel="nofollow">FAQ</a>
-                <a href="#gallery" class="navItem" rel="nofollow">GALLERY</a>
-                <a href="#registry" class="navItem" rel="nofollow">REGISTRY</a>
+                <a href="events" class="navItem" rel="nofollow">EVENTS</a>
+                <a href="travel" class="navItem" rel="nofollow">TRAVEL</a>
+                <a href="rsvp" class="navItem" rel="nofollow">RSVP</a>
+                <a href="faq" class="navItem" rel="nofollow">FAQ</a>
+                <a href="gallery" class="navItem" rel="nofollow">GALLERY</a>
+                <a href="registry" class="navItem" rel="nofollow">REGISTRY</a>
             </div>
         </nav>
 	</div>
 
     <!-- Header -->
-    <header>
-        <div class="color-theme-white btn-outline-light ">
+    <header class="bg-dark" id="header">
+        <div style="padding: 10px;" id="logo">
             <a href="#">
-                <picture>
-                    <!-- <source srcset="./assets/images/dark-wedding-logo.png" media="(prefers-color-scheme: dark)" />
-                <source srcset="./assets/images/light-wedding-logo.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" /> -->
-                    <img src="./assets/images/new-dark-wedding-logo_v1.png" width="100" height="62"
-                        alt="Logo" onclick="util.modal(this)">
-                </picture>
-
+            <picture>
+                <img id="logo-img" src="./assets/images/light-wedding-logo.png" width="100" height="62"
+                alt="Logo" onclick="util.modal(this)">
+            </picture>
             </a>
+            
         </div>
+        
+
+        <!-- Logo switch -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const header = document.getElementById('header');
+                const logoImg = document.getElementById('logo-img');
+        
+                function switchLogo() {
+                    if (header.classList.contains('bg-dark')) {
+                        logoImg.src = './assets/images/light-wedding-logo.png';
+                    } else if (header.classList.contains('bg-light')) {
+                        logoImg.src = './assets/images/new-dark-wedding-logo_v1.png';
+                    }
+                }
+        
+                // Initial logo switch
+                switchLogo();
+        
+                // Optional: If you want to switch logos dynamically when the class changes
+                const observer = new MutationObserver(switchLogo);
+                observer.observe(header, { attributes: true, attributeFilter: ['class'] });
+            });
+        </script>        
+        
     </header>
 
-    <div id="MMlinkCont" style="height: 73.6016px;">
+    <div class="bg-dark" id="MMlinkCont" style="height: 73.6016px;">
         <div id="mm" class></div>
     </div>
 
@@ -283,15 +455,13 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="bg-dark text-light" data-bs-spy="scroll" data-bs-target="#navbar-menu"
+    <main class="singlePage bg-dark text-light" data-bs-spy="scroll" data-bs-target="#navbar-menu"
         data-bs-root-margin="0px 0px -40%" style="margin-top: 73.6016px;" data-bs-smooth-scroll="true" tabindex="0">
 
-        
-
         <!-- Events -->
-        <!-- <section class="dark-section bg-black" id="date"> -->
+        <section class="events " id="events">
 
-            <div class="container" id="events">
+            <div class="container">
                 <div class="text-center" id="date">
     
                     <h1 class="font-esthetic py-3" style="font-size: 2rem;">Please join us as we walk down the aisle</h1>
@@ -354,14 +524,14 @@
                         <div class="row align-items-center">
                             <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-duration="1500">
                                 <h1 class="font-esthetic py-2" style="font-size: 1.5rem;">Ceremony</h1>
-                                <p>4:30 in the Afternoon (EST) <br>
+                                <p>4:30 PM - 5:00 PM (EST) <br>
                                     OceanCliff Ballroom <br> (Outdoor if weather permits)
                                 </p>
                             </div>
 
                             <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-duration="1500">
                                 <h1 class="font-esthetic py-2" style="font-size: 1.5rem;">Reception</h1>
-                                <p>6:30 in the Evening (EST) <br> OceanCliff Ballroom & Reception Rooms</p>
+                                <p>5:00 PM - 10:00 AM (EST) <br> OceanCliff Ballroom & Reception Rooms</p>
                             </div>
                             
                             <!-- <div class="divider"></div> Faint line in the middle -->
@@ -412,40 +582,7 @@
                     </div>
                 </div>
             </div>
-            <!-- </section> -->
-
-        <!-- Home -->
-        <!-- <section class="container" id="home">
-
-            <div class="text-center pt-4">
-                
-                <h1 class="font-esthetic my-4" style="font-size: 2.5rem;">Save The Date</h1>
-
-                <div class="py-4">
-                    <div class="img-crop border border-3 border-light shadow mx-auto">
-                        <img src="./assets/images/bg.JPG" alt="bg" onclick="util.modal(this)">
-                    </div>
-                </div>
-
-                <h1 class="font-esthetic my-4" style="font-size: 3rem;">Kristin & Christopher</h1>
-                <p class="mb-0" style="font-size: 1.5rem;">Sunday, 13 April 2025</p>
-
-                <a class="btn btn-outline-light btn-sm shadow rounded-pill px-3 my-2" target="_blank"
-                    href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MWcxN29scjFwMG9nbWxlNXZhNGhnZHE2YWIgY3Jpc29rb25rd29AbQ&tmsrc=crisokonkwo%40gmail.com">
-                    <i class="fa-solid fa-calendar-check me-2"></i>Save Date to Calendar
-                </a>
-
-                <div class="d-flex justify-content-center align-items-center mt-4 mb-2">
-                    <div class="mouse-animation border border-2">
-                        <div class="scroll-animation"></div>
-                    </div>
-                </div>
-
-                <p class="m-0">Scroll Down</p>
-                <a href="./assets/images/SaveTheDate.png" download="KrisChris-SaveTheDate">Download and
-                    Print For Keepsake</a>
-            </div>
-        </section> -->
+        </section>
 
         <!-- Wave Separator -->
         <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="color-theme-black">
@@ -455,7 +592,7 @@
         </svg>
 
         <!-- Travel -->
-        <section class="dark-section bg-white" id="travel">
+        <section class="dark-section bg-white travel" id="travel">
 
             <div class="container text-center pt-4">
                 <h1 class="font-esthetic py-3 px-2" style="font-size: 2rem"> 
@@ -560,9 +697,10 @@
         </svg>
 
         <!-- RSVP -->
-        <section class="rsvp" id="rsvp">
+        <section class="rsvp home" id="rsvp">
             <!-- action="save-the-date.php" method="POST" -->
                 <!-- <form id="rsvp285463" class="rsvpImage" action="/scripts/rsvp/" method="post"> -->
+            <div class="container">
                 <form id="rsvp285463" class="rsvpImage" action="save-the-date.php" method="POST">
                 
                     <input type="hidden" name="sid" value="9051">
@@ -628,9 +766,9 @@
                         <!-- class="btn btn-sm rounded-pill shadow-sm mb-2 px-3 btn-outline-dark" -->
                         
                         <a id="addGuest85463" class="addGuestBtn">
-                            <span class="icon add"></span>
+                            <span class="icon add" style="--bs-btn-color:var(--bs-body-color);"></span>
                             <span class="text">Add Invited Guest</span>
-                            <span class="icon sub"></span>
+                            <span class="icon sub" style="--bs-btn-color:var(--bs-body-color);"></span>
                         </a>
                         
                         <div class="line"></div>
@@ -643,6 +781,7 @@
                         <button class="btn btn-large rounded-pill shadow-sm px-3 btn-outline-dark button rsvp" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button>
                     </div>
                 </form>
+            </div>
 
             <!-- RSVP scripts -->
             <script type="text/javascript">
@@ -790,7 +929,7 @@
         </svg> -->
 
         <!-- FAQ -->
-        <section class="dark-section bg-black" id="faq">
+        <section class="dark-section bg-black faq" id="faq"> 
             <div class="container text-center">
                 <div class="overflow-x-hidden">
                     <h1 class="font-esthetic py-3 px-2" style="font-size: 2rem;">FAQ</h1>
@@ -837,7 +976,7 @@
                     <!-- end sectionCont -->
                     <div data-aos="fade-right" data-aos-duration="1500">                    
                         <p class="py-0" style="font-size: 1.5rem; margin-bottom: 0;">Will there be parking available?</h3>
-                        <p>There will be plenty of parking available no valvet though. Please plan to arrive early if you need to park.</p>
+                        <p>There will be plenty of parking available no valet though. Please plan to arrive early if you need to park.</p>
                         <hr class="mt-3 mb-2">
                     </div>
                     <!-- end sectionCont -->
@@ -865,7 +1004,7 @@
         </svg>
 
         <!-- Gallery -->
-        <section class="rsvp" id="gallery">
+        <section class="gallery" id="gallery">
             <div class="container pb-5 pt-4">
                 <div class="card-body border rounded-5 shadow p-3">
                     <h1 class="font-esthetic text-center py-3" data-aos="fade-down" data-aos-duration="1500" style="font-size: 2rem;">Gallery</h1>
@@ -936,7 +1075,7 @@
         </svg>
 
         <!-- REGISTRY -->
-        <section class="dark-section bg-black" id="registry">
+        <section class="dark-section bg-black registry" id="registry">
             <div class="container text-center pt-4">
                 <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
                     Registry
@@ -1093,6 +1232,7 @@
         </div>
     </div>
 
+    <!-- Success Message -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('body').style.overflowY = 'scroll';
@@ -1114,41 +1254,41 @@
             // }, 3000);
 
             
-            const loginName = sessionStorage.getItem('loginName');
-            document.getElementById('contactName').value = loginName;
+            // const loginName = sessionStorage.getItem('loginName');
+            // document.getElementById('contactName').value = loginName;
             
-            const form = document.getElementById('contactForm');
-            const successMessage = document.getElementById('successMessage');
+            // const form = document.getElementById('contactForm');
+            // const successMessage = document.getElementById('successMessage');
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent default form submission
+            // form.addEventListener('submit', function (event) {
+            //     event.preventDefault(); // Prevent default form submission
 
-                const formData = new FormData(form);
+            //     const formData = new FormData(form);
 
-                fetch('save-the-date.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            successMessage.style.display = 'block';
-                            setTimeout(() => {
-                                successMessage.style.opacity = 1;
-                                setTimeout(() => {
-                                    successMessage.style.opacity = 0;
-                                    setTimeout(() => {
-                                        successMessage.style.display = 'none';
-                                        form.reset();
-                                    }, 1000); // Time for the fade out transition
-                                }, 3000); // Time before starting the fade out
-                            }, 100); // Time for the fade in transition
-                        } else {
-                            alert('Failed to submit form. Please try again.');
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
+            //     fetch('save-the-date.php', {
+            //         method: 'POST',
+            //         body: formData
+            //     })
+            //         .then(response => response.json())
+            //         .then(data => {
+            //             if (data.success) {
+            //                 successMessage.style.display = 'block';
+            //                 setTimeout(() => {
+            //                     successMessage.style.opacity = 1;
+            //                     setTimeout(() => {
+            //                         successMessage.style.opacity = 0;
+            //                         setTimeout(() => {
+            //                             successMessage.style.display = 'none';
+            //                             form.reset();
+            //                         }, 1000); // Time for the fade out transition
+            //                     }, 3000); // Time before starting the fade out
+            //                 }, 100); // Time for the fade in transition
+            //             } else {
+            //                 alert('Failed to submit form. Please try again.');
+            //             }
+            //         })
+            //         .catch(error => console.error('Error:', error));
+            // });
         });
     </script>
 

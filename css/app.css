@@ -53,6 +53,10 @@ body {
     z-index: 1055 !important;
 }
 
+main.singlePage {
+    min-height: calc(100vh - 142px);
+}
+
 .loading-page {
     position: fixed;
     inset: 0 !important;
@@ -110,16 +114,27 @@ header {
     justify-content: center;
     width: 100%;
     min-height: 56px;
-    padding: 6px 40px;
+    padding: 0px 40px;
     box-sizing: border-box;
     text-align: center;
     line-height: 0;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #F1ECE1;
+    /* background-color: #F1ECE1; */
     z-index: 600;
     overflow: hidden;
+}
+
+header:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #D0B28E;
 }
 
 #mm {
@@ -139,8 +154,8 @@ header {
 #mm:before {
     content: "";
     display: block;
-    border-top: solid 2px;
-    border-bottom: solid 2px;
+    border-top: solid 2px #9d8773;
+    border-bottom: solid 2px #9d8773;
     height: 14px;
     -webkit-transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -150,12 +165,28 @@ header {
     content: "";
     display: block;
     position: absolute;
-    border-top: solid 2px;
+    border-top: solid 2px #9d8773;
     width: 100%;
     top: 50%;
     margin-top: -1px;
     -webkit-transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transition: all 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+#mm.closeNav:before {
+    border-bottom: none;
+    height: 0;
+    /* margin-top: 7px; */
+    border-top-color: #9d8773 !important;
+    border-bottom-color: #9d8773 !important;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#mm.closeNav:after {
+    border-top-color: #9d8773 !important;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 #navContent {
@@ -179,6 +210,31 @@ header {
     align-content: stretch;
     text-align: left;
     position: fixed;
+}
+
+#navContent.split nav {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: top;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 4% 5.5% 4% 7%;
+    background-color: #F1ECE1;
+    transform: translateY(-100%);
+}
+
+#navContent.split.active .bgBox {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+#navContent.split.active nav {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
 }
 
 #navContent.split .bgBox {
@@ -223,6 +279,26 @@ header {
     -moz-osx-font-smoothing: grayscale; */
 }
 
+#navContent.split nav a.active:hover:after, #navContent.split nav a.active:active:after, #navContent.split nav a.active.select:after {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+#navContent.split nav a:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    position: relative;
+    background: #D0B28E;
+    /* -webkit-transform: scaleX(0); */
+    transform: scaleX(0);
+    /* -webkit-transform-origin: left center; */
+    transform-origin: left center;
+    /* -webkit-transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955); */
+    transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
 #navContent.split nav a.active:hover, #navContent.split nav a.active:active, #navContent.split nav a.active.select {
     opacity: 0.65;
     color: #9d8773;
@@ -230,6 +306,19 @@ header {
 
 #navContent nav a:hover, #navContent nav a:active, #navContent nav a.select {
     color: #9a9490;
+}
+
+#navContent:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: #F1ECE1; */
+    opacity: 0.95;
+    z-index: 0;
 }
 
 .textCont {
@@ -317,14 +406,14 @@ header {
     background-color: transparent; 
     /* #b0e0e6 Change background color */
     color: #fff; /* Change text color */
-    border-color: #fff;
+    border-color: #D0B28E;
     transition: background-color 0.3s, color 0.3s; /* Add transition for smooth effect */
 }
 
 .btn_bg:hover, .btn_bg:focus {
-    color: #e8ca6f; /* Change text color on hover */
-    border-color: #e8ca6f; /* Keep border color same */
+    color: #D0B28E; /* Change text color on hover */
     background-color: #fff; /* Change background color on hover */
+    opacity: 0.8; /* Change opacity on hover */
 }
 
 /* .btn {
@@ -592,7 +681,8 @@ section.rsvp .addGuestBtn .icon:before {
     width: 11px;
     height: 3px;
     margin: 14px auto 0;
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: var(--bs-btn-color);
 }
 
 section.rsvp .addGuestBtn .icon.add:after {
@@ -601,7 +691,9 @@ section.rsvp .addGuestBtn .icon.add:after {
     width: 3px;
     height: 11px;
     margin: -7px auto 0;
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color: var(--bs-btn-color);
+
 }
 
 section.rsvp .addGuestBtn .icon {
