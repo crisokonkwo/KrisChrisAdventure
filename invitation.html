@@ -628,19 +628,35 @@
                 });
             </script>
             <section class="rsvp home" id="rsvp">
+
+                <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span>&times;</span>
+                                </button>
+                                <div class="section-padding">
+                                    <h3>Thank you!</h3>
+                                    <p>We are glad to see you join us on our big day.</p>
+                                    <div id="add-to-cal"></div>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
                 <!-- action="save-the-date.php" method="POST" -->
                     <!-- <form id="rsvp285463" class="rsvpImage" action="/scripts/rsvp/" method="post"> -->
                 <div class="container text-center pb-5 pt-4">
                     <div class="card-body border rounded-5 shadow p-3">
                         <h1 class="font-esthetic py-3" style="font-size: 2rem;">RSVP</h1>
                         <p style="font-size: .8rem;">Kindly respond by <strong>April 1, 2025</strong></p>
-                        <form id="rsvp285463" class="rsvpImage" action="save-the-date.php" method="POST">
+                        <form id="rsvp285463" class="rsvpImage" action="" method="POST">
                         
-                            <input type="hidden" name="sid" value="9051">
+                            <!-- <input type="hidden" name="sid" value="9051">
                             <input type="hidden" name="pid" value="85463">
                             <input type="hidden" name="rid" value="2">
                             <input type="hidden" name="email" value="">
-                            <div style="display:none;"><input type="text" name="hpid" id="hpid"></div>
+                            <div style="display:none;"><input type="text" name="hpid" id="hpid"></div> -->
 
                             <!-- <div class="text-center">
                                 <h1 class="font-esthetic" style="font-size: 2rem;">RSVP</h1>
@@ -698,7 +714,7 @@
 
                                 <!-- class="btn btn-sm rounded-pill shadow-sm mb-2 px-3 btn-outline-dark" -->
                                 
-                                <a id="addGuest85463" class="addGuestBtn">
+                                <a id="addGuest" class="addGuestBtn">
                                     <span class="icon add" style="--bs-btn-color:var(--bs-body-color);"></span>
                                     <span class="text">Add Guest</span>
                                     <span class="icon sub" style="--bs-btn-color:var(--bs-body-color);"></span>
@@ -712,7 +728,7 @@
                                 </div>
                                 
                                 <!-- <button class="btn btn-large rounded-pill shadow-sm px-3 btn-outline-dark button rsvp" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button> -->
-                                <button class="btn btn-large shadow-sm rounded-pill px-3 btn-outline-dark" type="submit" value="Submit" name="submit">RSVP NOW</button>
+                                <button class="btn btn-large shadow-sm rounded-pill px-3 btn-outline-dark" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button>
                             </div>
                         </form>
                     </div>
@@ -726,7 +742,7 @@
                     }
 
                     let confirmationButtonLink = '';
-                    var newGroup = $('#addGuest85463').prev('.group').clone();
+                    var newGroup = $('#addGuest').prev('.group').clone();
                     var num = 0;
 
                     function resetRSVP_reqEvent(i,e) {
@@ -744,7 +760,7 @@
                     }
                     $('.rsvpResponse').each(resetRSVP_reqEvent);
 
-                    $('#addGuest85463 .add').click(function() {
+                    $('#addGuest .add').click(function() {
                         $this = $(this).parent();
                         num = num + 1;
                         var newGuest = newGroup.clone();
@@ -775,7 +791,7 @@
                         // resetInvalidEvents($this.closest('form'));
                     });
                     
-                    $('#addGuest85463 .sub').click(function() {
+                    $('#addGuest .sub').click(function() {
                         $this = $(this).parent();
                         num = num - 1;
                         $this.prev('.group').slideUp(400, function() {
@@ -796,27 +812,39 @@
                     
                     $('#rsvp285463').submit(function(e) {
                         e.preventDefault();
-                        var $this = $(this);
-                        $this.find('button[type="submit"]').prop('disabled', true);
-                        var url = $this.attr('action');
-                        $.ajax({
-                            url: url,
-                            type: 'post',
-                            dataType: 'json',
-                            data: $this.serialize()
-                        }).fail(function(jqXHR, textStatus){
-                            $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
-                            $this.find('button[type="submit"]').prop('disabled', false);
-                        }).done(function(data) {
-                            if (data.success) {
-                                confirmBox85463($this);
-                                var destination = $this.offset().top - (headerHeight() + 20);
-                                TweenLite.to('html, body', 0.4, {scrollTop: destination, delay: 0.4, ease: Power3.easeOut});
-                            } else {
-                                $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
-                                $this.find('button[type="submit"]').prop('disabled', false);
-                            }
-                        });
+                        var data = $(this).serialize();
+                        console.log(data);
+                        
+                        confirmBox85463(data);
+
+                        $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
+                        // $('#rsvp285463 button[type="submit"]').prop('disabled', false);
+
+
+                        // $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+                        // $('#alert-wrapper').slideDown(400);
+
+                        // var $this = $(this);
+                        // $this.find('button[type="submit"]').prop('disabled', true);
+                        // var url = $this.attr('action');
+                        // $.ajax({
+                        //     url: url,
+                        //     type: 'post',
+                        //     dataType: 'json',
+                        //     data: $this.serialize()
+                        // }).fail(function(jqXHR, textStatus){
+                        //     $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
+                        //     $this.find('button[type="submit"]').prop('disabled', false);
+                        // }).done(function(data) {
+                        //     if (data.success) {
+                        //         confirmBox85463($this);
+                        //         var destination = $this.offset().top - (headerHeight() + 20);
+                        //         TweenLite.to('html, body', 0.4, {scrollTop: destination, delay: 0.4, ease: Power3.easeOut});
+                        //     } else {
+                        //         $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
+                        //         $this.find('button[type="submit"]').prop('disabled', false);
+                        //     }
+                        // });
                     });
                     // resetInvalidEvents($('#rsvp285463'));
                 
@@ -1104,7 +1132,7 @@
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Dress Code Modal -->
         <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 
             <style>
@@ -1128,7 +1156,7 @@
             <!-- <div class="modal fade" id="dc-modal" tabindex="-1" aria-labelledby="dc-modalLabel" aria-hidden="true"> -->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>X</span></button>
+                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                     <div class="modal-body">
                         <h1 style="margin-bottom: 10px;">Dress Code Tips for Our Special Days</h1>
 
@@ -1165,7 +1193,7 @@
         <div id="pdf-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
-                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>X</span></button>
+                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                     <div class="modal-body">
                         <iframe src="./assets/other_hotels.pdf" frameborder="0" style="width: 100%; height: 80vh;"></iframe>
                     </div>

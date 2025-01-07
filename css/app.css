@@ -351,7 +351,11 @@ body {
   } */
   
   .btn-large_bg {
-    padding: 15px 40px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+    border-color: #D0B28E; 
     animation: pulse 1.5s infinite;
   }
 
