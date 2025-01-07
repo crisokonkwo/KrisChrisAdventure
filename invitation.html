@@ -310,6 +310,7 @@
         </script>
     </head>
     <body>
+        <style type="text/css" id="secMinHeight">main.singlePage {min-height: calc(100vh - 142.5938px);}</style>
         <!-- Navbar Top -->
         <div id="navContent" class="split singleNav" style="display: none;">
             <div class="bgBox" style="background-color: rgba(255,255,255,0.8)"></div>
@@ -369,8 +370,11 @@
         </div>
 
         <!-- Main Content -->
+        
         <main class="singlePage bg-dark text-light" data-bs-spy="scroll"
             data-bs-root-margin="0px 0px -40%" style="margin-top: 73.6016px;" data-bs-smooth-scroll="true" tabindex="0">
+
+            
 
             <!-- Events -->
             <section class="events " id="events">
@@ -490,6 +494,7 @@
                                     <div class="scroll-animation"></div>
                                 </div>
                             </div>
+                            <p class="m-0 p-0 text-secondary" style="font-size: 0.95rem;">Scroll Down</p>
                             <!-- <p class="mb-0" style="font-size: .8rem;">Scroll Down</p> -->
 
                         </div>
@@ -609,6 +614,19 @@
             </svg>
 
             <!-- RSVP -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const t = window.location.href;
+                    const newSection = t === '' ? 'home' : t.split('#')[1] || 'home';
+                    // const headerH = document.querySelector('header').offsetHeight;
+                    headerH = headerHeight();
+                    console.log(newSection);
+                    console.log(headerH);
+                    let destination = $('section.' + newSection).offset().top - headerH;
+                    $('html, body').animate({ scrollTop: destination});
+                    // window.scrollTo({ top: destination, behavior: 'smooth' });
+                });
+            </script>
             <section class="rsvp home" id="rsvp">
                 <!-- action="save-the-date.php" method="POST" -->
                     <!-- <form id="rsvp285463" class="rsvpImage" action="/scripts/rsvp/" method="post"> -->
@@ -693,7 +711,8 @@
                                     <textarea name="customs[custom1][answer]" placeholder="make a song request" class="form-control" style="/*overflow: hidden;*/ resize: none; height: 40px;"></textarea>
                                 </div>
                                 
-                                <button class="btn btn-large rounded-pill shadow-sm px-3 btn-outline-dark button rsvp" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button>
+                                <!-- <button class="btn btn-large rounded-pill shadow-sm px-3 btn-outline-dark button rsvp" type="submit" value="Submit" name="submit"><span>RSVP NOW</span></button> -->
+                                <button class="btn btn-large shadow-sm rounded-pill px-3 btn-outline-dark" type="submit" value="Submit" name="submit">RSVP NOW</button>
                             </div>
                         </form>
                     </div>
@@ -994,37 +1013,36 @@
             <!-- REGISTRY -->
             <section class="dark-section bg-black registry" id="registry">
                 <div class="container text-center pb-5 pt-4">
-                    <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
-                        Registry
-                    </h1>
+                    <div class="card-body border rounded-5 shadow p-3">
+                        <h1 class="font-esthetic mt-0 mb-3" style="font-size: 2rem">
+                            Registry
+                        </h1>
 
-                    <p style="font-size: 1.25rem;" class="px-2">
-                        Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we have created a registry with the following options:
-                    </p>
+                        <p style="font-size: 1.25rem;" class="px-2">
+                            Your presence at our wedding is the greatest gift of all. However, if you wish to honor us with a gift, we have created a registry with the following options:
+                        </p>
 
-                    <div class="row justify-content-center align-items-center">
-                        <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-duration="1500">
-                            <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Cash Registry</h2>
-                            <p class="px-2">
-                                <a href="https://withjoy.com/christopher-and-kristin/registry" target="_blank" 
-                                class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
-                                <i></i>Cash</a>
-                            </p>
-                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-right" data-aos-duration="1500">
+                                <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Cash Registry</h2>
+                                <p class="px-2">
+                                    <a href="https://withjoy.com/christopher-and-kristin/registry" target="_blank" 
+                                    class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                    <i></i>Cash</a>
+                                </p>
+                            </div>
 
-                        <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-duration="1500">
-                            <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Amazon</h2>
-                            <p class="px-2">
-                                <a href="https://www.amazon.com/" target="_blank"
-                                        class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
-                                        <i></i>Amazon</a>
-                            </p>
+                            <div class="py-1 col-md-6 col-sm-12 col-xs-12" data-aos="fade-left" data-aos-duration="1500">
+                                <h2 class="font-esthetic py-2" style="font-size: 1.5rem;">Amazon Registry</h2>
+                                <p class="px-2">
+                                    <a href="https://www.amazon.com/" target="_blank"
+                                            class="btn btn-outline-light btn-sm rounded-pill mb-0 px-3" style="border: 1px solid #e2e2e2;">
+                                            <i></i>Amazon</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-                
-
             </section>
         </main>
 
@@ -1089,32 +1107,52 @@
         <!-- Modal -->
         <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 
-        <!-- <div class="modal fade" id="dc-modal" tabindex="-1" aria-labelledby="dc-modalLabel" aria-hidden="true"> -->
+            <style>
+                .modal-content {
+                    /* background-color: #fff; */
+                    border-radius: 10px;
+                    padding: 20px;
+                    max-width: 800px;
+                    margin: 0 auto;
+                }
+                .tips {
+                    margin: 20px 0;
+                }
+                .event-title {
+                    font-weight: bold;
+                    font-size: 1.2em;
+                    margin: 15px 0 5px;
+                }
+            </style>
+
+            <!-- <div class="modal fade" id="dc-modal" tabindex="-1" aria-labelledby="dc-modalLabel" aria-hidden="true"> -->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>X</span></button>
                     <div class="modal-body">
-                        <h5>Rehearsal/Cocktail Night</h5>
-                        <p>
-                            <strong>Casual</strong>
-                            <br>
-                            A semi-formal look that is contemporary &amp; fashionable which is not too prim &amp; proper is the best
-                            to pull off this night. You can see some pins for
-                            <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-women/">ladies</a>
-                            &amp; <a href="https://www.pinterest.com/ramswarooppatra/cocktail-night-outfit-for-men/">gents</a>.
-                        </p>
-                        <h5>Wedding Day</h5>
-                        <p>
-                            <strong>Cocktail/Semi-Formal</strong>
-                            <br>
-                            Ladies can flaunt their unconventional sarees,
-                            <a href="https://www.pinterest.com/ramswarooppatra/indo-western-lehengas/">lehengas</a>,
-                            <a href="https://www.pinterest.com/ramswarooppatra/indo-western-anarkalis/">anarkalis</a>,
-                            dresses and the list
-                            goes on whereas gentlemen can wear any kind of suit or just blazer. If you don't like to wear a
-                            suit/blazer, you can do a <a href="https://www.pinterest.com/ramswarooppatra/high-neck-jackets-for-men/">high-neck
-                            (band gala) waistcoat &amp; shirt</a> combo.
-                        </p>
+                        <h1 style="margin-bottom: 10px;">Dress Code Tips for Our Special Days</h1>
+
+                        <div class="tips">
+                            <div class="event-title">Rehearsal/Cocktail Night</div>
+                            <p><strong>Dress Code:</strong> Casual</p>
+                            <p>This is a relaxed and fun evening, so keep it comfortable yet stylish!</p>
+                            <ul>
+                                <li><strong>Ladies:</strong> Flowy dresses, jumpsuits, or chic separates – something casual but fashionable.</li>
+                                <li><strong>Gentlemen:</strong> Well-fitted shirts, chinos, or casual blazers. Keep it easygoing and polished.</li>
+                            </ul>
+                        </div>
+
+                        <div class="tips">
+                            <div class="event-title">Wedding Day</div>
+                            <p><strong>Dress Code:</strong> Cocktail/Semi-Formal</p>
+                            <p>Celebrate with us in elegant, semi-formal attire that’s perfect for a memorable occasion.</p>
+                            <ul>
+                                <li><strong>Ladies:</strong> Cocktail dresses, midi dresses, or any other semi-formal outfit that makes you feel fabulous.</li>
+                                <li><strong>Gentlemen:</strong> Suits or blazers are great, but no need to go overly formal – just look sharp and stylish.</li>
+                            </ul>
+                        </div>
+
+                        <p>We can’t wait to celebrate with you and see your amazing looks!</p>
                     </div>
                     <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -1127,7 +1165,7 @@
         <div id="pdf-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
-                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close">x</button>
+                    <button type="button" class="btn ms-auto" data-bs-dismiss="modal" aria-label="Close"><span>X</span></button>
                     <div class="modal-body">
                         <iframe src="./assets/other_hotels.pdf" frameborder="0" style="width: 100%; height: 80vh;"></iframe>
                     </div>

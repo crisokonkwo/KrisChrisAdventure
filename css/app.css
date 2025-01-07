@@ -7,7 +7,7 @@ html {
 body {
     font-family: 'Josefin Sans', sans-serif !important;
     padding: 0 !important;
-    text-size-adjust: none;
+    overflow-x: hidden !important;
 }
 
 .font-esthetic {
@@ -53,9 +53,9 @@ body {
     z-index: 1055 !important;
 }
 
-main.singlePage {
+/* main.singlePage {
     min-height: calc(100vh - 142px);
-}
+} */
 
 .loading-page {
     position: fixed;
@@ -333,27 +333,6 @@ main.singlePage {
 } 
 .textCont *:last-child {
     margin-bottom: 0 !important;
-}
-
-.btn_bg {
-    font-size: 20px;
-    border: solid 2px;
-    padding: 10px 20px;
-    border-radius: 40px;
-    display: inline-block;
-    text-transform: uppercase;
-    font-weight: bold; /* Make the button text bold */
-    background-color: transparent; 
-    /* #b0e0e6 Change background color */
-    color: #fff; /* Change text color */
-    border-color: #D0B28E;
-    transition: background-color 0.3s, color 0.3s; /* Add transition for smooth effect */
-}
-
-.btn_bg:hover, .btn_bg:focus {
-    color: #D0B28E; /* Change text color on hover */
-    background-color: #fff; /* Change background color on hover */
-    opacity: 0.7; /* Change opacity on hover */
 }
 
 /* .btn {
