@@ -73,6 +73,7 @@
         <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
         <!-- App -->
         <link rel="stylesheet" href="./css/app.css">
@@ -649,8 +650,8 @@
                 <div class="container text-center pb-5 pt-4">
                     <div class="card-body border rounded-5 shadow p-3">
                         <h1 class="font-esthetic py-3" style="font-size: 2rem;">RSVP</h1>
-                        <p style="font-size: .8rem;">Kindly respond by <strong>April 1, 2025</strong></p>
-                        <form id="rsvp285463" class="rsvpImage" action="" method="POST">
+                        <form id="rsvp285463" class="rsvpImage" action="https://script.google.com/macros/s/AKfycbybjUBodkCfaHLc9Z2jOEqF5Wv__SSe7o50zMoVipJkSmCyu68r5wz0S4jmKUinc3me/exec" method="POST">
+                            <p id="note85463" style="font-size: .8rem;">Kindly respond by <strong>April 1, 2025</strong></p>
                         
                             <!-- <input type="hidden" name="sid" value="9051">
                             <input type="hidden" name="pid" value="85463">
@@ -680,9 +681,10 @@
                                             <div class="selectWrap">	
                                                 <select name="guests[0][events][event1][meals]" class="hasPlaceholder form-control" required="">
                                                     <option value="">Select your entrée</option>
-                                                    <option value="Beef">Beef</option>
-                                                    <option value="Fish">Fish</option>
-                                                    <option value="Veg">Veg</option> 
+                                                    <option value="Chicken Roulade">Tuscan Chicken Roulade</option>
+                                                    <option value="Atlantic Salmon">Grilled North Atlantic Salmon</option>
+                                                    <option value="Bistro Tender">Herb &amp; Spice Rubbed Bistro Tender</option>
+                                                    <option value="Veg Napoleon">Vegetable Napoleon</option> 
                                                 </select> 
                                             </div>
                                             <div class="selectWrap">
@@ -804,48 +806,132 @@
                     });
                     
                     function confirmBox85463(fieldCont) {
-                        fieldCont.find('.formFields').slideUp(400).after('<div class="content confirmBox"><h3 style="text-align:center;">Thank you for your reply.</h3><div class="buttonCont">' + confirmationButtonLink + '</div><a class="button rsvp" rel="nofollow" onclick="openForm85463()"><span>Change my RSVP</span></a></div>');
-                        setTimeout(function() {
-                            $(window).resize();
-                        }, 600);
+                        var main = $('main');
+                        if (main.hasClass('bg-light')) {
+                            fieldCont.find('.formFields').slideUp(400).after('<div class="content confirmBox text-dark bg-light"><h3 style="text-align:center;">Thank you for your RSVP! We look forward to seeing you on our special day.</h3><div class="buttonCont">' + confirmationButtonLink + '</div><a class="button rsvp btn btn-large shadow-sm rounded-pill px-3 btn-outline-dark" rel="nofollow" onclick="openForm85463()"><span>Change my RSVP</span></a></div>');
+                            setTimeout(function() {
+                                $(window).resize();
+                            }, 600);
+                        } else if (main.hasClass('bg-dark')) {
+                            fieldCont.find('.formFields').slideUp(400).after('<div class="content confirmBox text-light bg-dark"><h3 style="text-align:center;">Thank you for your RSVP! We look forward to seeing you on our special day.</h3><div class="buttonCont">' + confirmationButtonLink + '</div><a class="button rsvp btn btn-large shadow-sm rounded-pill px-3 btn-outline-light" rel="nofollow" onclick="openForm85463()"><span>Change my RSVP</span></a></div>');
+                            setTimeout(function() {
+                                $(window).resize();
+                            }, 600);
+                        }
+                        
                     }
-                    
+
+                    // function alert_markup(alert_type, msg) {
+                    //     return '<div class="alert alert-' + alert_type + '" role="alert">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span>&times;</span></button></div>';
+                    // }
+
                     $('#rsvp285463').submit(function(e) {
                         e.preventDefault();
-                        var data = $(this).serialize();
-                        console.log(data);
+                        $this = $(this);
+                        $this.find('button[type="submit"]').prop('disabled', true);
+                        var url = $this.attr('action');
+
+                        const num = $this.find('.guest').length;
+                        console.log('Number of guests: ' + num);
+
+                        const formData = [];
+
+                        for (let i = 0; i < num; i++) {
+                            const guestData = {
+                                name: $(`input[name="guests[${i}][name]"]`).val(),
+                                response: $(`select[name="guests[${i}][events][event1][response]"]`).val(),
+                                entree: $(`select[name="guests[${i}][events][event1][meals]"]`).val(),
+                                transportation: $(`select[name="guests[${i}][events][event1][transportation]"]`).val(),
+                                rehearsal: $(`select[name="guests[${i}][events][event2][response]"]`).val(),
+                                diet: $(`textarea[name="guests[${i}][events][event1][diet_restrictions]"]`).val(),
+                                // song: $(`textarea[name="customs[custom1][answer]"]`).val(),
+                            };
+
+                            // Add the song field only for the first guest
+                            if (i === 0) {
+                                guestData.song = $(`textarea[name="customs[custom1][answer]"]`).val();
+                            }
+
+                            formData.push(guestData); // Add guest data to the array
+                        }
+
+                        console.log('Form Data:', formData);
+
+                        // const formData = {
+                        //     name: $('input[name="guests[0][name]"]').val(),
+                        //     response: $('select[name="guests[0][events][event1][response]"]').val(),
+                        //     entree: $('select[name="guests[0][events][event1][meals]"]').val(),
+                        //     transportation: $('select[name="guests[0][events][event1][transportation]"]').val(),
+                        //     rehearsal: $('select[name="guests[0][events][event2][response]"]').val(),
+                        //     diet: $('textarea[name="guests[0][events][event1][diet_restrictions]"]').val(),
+                        //     song: $('textarea[name="customs[custom1][answer]"]').val(),
+                        // };
+
+                        // const scriptURL = 'https://script.google.com/macros/s/AKfycbzLEt1GFBWI_lOYVpOpUJMY2-q33Wf4ueIMyZ72D9blLwy50HYON1eZ_6K2ZAmELWOu/exec';
                         
-                        confirmBox85463(data);
+                        $.ajax({
+                            url: url,
+                            method: 'POST',
+                            dataType: 'application/json', // Send data as JSON
+                            data: JSON.stringify({ guests: formData }), // Serialize data
+                            dataType: 'text', // Treat response as plain text
+                        }).done(function(response) {
+                            console.log('Success:', response);
+                            confirmBox85463($this);
+                                
+                            // alert('Thank you for your RSVP!');
+                            // $('#rsvp-modal').modal('show');                 
+                        }).fail(function(jqXHR, textStatus, errorThrown){
+                            console.error('AJAX Error:', textStatus, errorThrown);
+                            console.log('Response:', jqXHR.responseText);
+                            alert('Sorry there was an error. Please reachout via text or call. ERROR: ' + textStatus + ' ' + errorThrown);
+                            // $('#rsvp-modal').modal('show');
+                            $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. Please reachout via text or call. ERROR: ' + textStatus + ' ' + errorThrown);
+                            $this.find('button[type="submit"]').prop('disabled', true);
+                        });
 
-                        $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
-                        // $('#rsvp285463 button[type="submit"]').prop('disabled', false);
-
-
-                        // $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
-                        // $('#alert-wrapper').slideDown(400);
-
-                        // var $this = $(this);
-                        // $this.find('button[type="submit"]').prop('disabled', true);
-                        // var url = $this.attr('action');
-                        // $.ajax({
-                        //     url: url,
-                        //     type: 'post',
-                        //     dataType: 'json',
-                        //     data: $this.serialize()
-                        // }).fail(function(jqXHR, textStatus){
-                        //     $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
-                        //     $this.find('button[type="submit"]').prop('disabled', false);
                         // }).done(function(data) {
                         //     if (data.success) {
+                        //         console.log('Success:', data);
+                        //         alert('Thank you for your RSVP! SUCCESS: ' + data.success);
+                        //         $('#rsvp-modal').modal('show');
                         //         confirmBox85463($this);
                         //         var destination = $this.offset().top - (headerHeight() + 20);
                         //         TweenLite.to('html, body', 0.4, {scrollTop: destination, delay: 0.4, ease: Power3.easeOut});
                         //     } else {
+                        //         console.error('Error:', data.error_message);
+                        //         alert('An error occurred. Please try again later.');
+                        //         $('#rsvp-modal').modal('show');
                         //         $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + data.error_message);
                         //         $this.find('button[type="submit"]').prop('disabled', false);
                         //     }
+                        // }).fail(function(jqXHR, textStatus){
+                        //     console.log(jqXHR.responseText);
+                        //     console.log(textStatus);
+                        //     console.error('Error:', textStatus);
+                        //     alert('An error occurred. Please try again later. ERROR: ' + textStatus);
+                        //     // $('#rsvp-modal').modal('show');
+                        //     $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
+                        //     $this.find('button[type="submit"]').prop('disabled', false);
+                        // });
+                        // confirmBox85463($this);
+                        // $('#rsvp285463 #note85463').addClass('info').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+                        // $.post(scriptURL, data).done(function (data) {
+                        //     console.log(data);
+                        //     confirmBox85463($('#rsvp285463'));
+                        //     // var destination = $('#rsvp285463').offset().top - (headerHeight() + 20);
+                        //     // TweenLite.to('html, body', 0.4, {scrollTop: destination, delay: 0.4, ease: Power3.easeOut});
+                        // }).fail(function (data) {
+                        //     console.log(data);
+                        // });
+                        // .fail(function(jqXHR, textStatus){
+                        //     console.log(jqXHR);
+                        //     console.log(textStatus);
+                        //     $('#rsvp285463 #note85463').addClass('error').html('Sorry there was an error. ' + textStatus);
+                        //     $this.find('button[type="submit"]').prop('disabled', false);
                         // });
                     });
+                    
                     // resetInvalidEvents($('#rsvp285463'));
                 
                 </script>
