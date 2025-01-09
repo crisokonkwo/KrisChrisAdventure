@@ -54,26 +54,26 @@ export const util = (() => {
         }, timeout);
     };
 
-    const guest = () => {
-        const name = (new URLSearchParams(window.location.search)).get('to');
-        const guest = document.getElementById('guest-name');
-        //const guestName = guestNameElement.getAttribute('data-message');
+    // const guest = () => {
+    //     const name = (new URLSearchParams(window.location.search)).get('to');
+    //     const guest = document.getElementById('guest-name');
+    //     //const guestName = guestNameElement.getAttribute('data-message');
 
-        if (!name) {
-            guest.remove();
-            return;
-        }
+    //     if (!name) {
+    //         guest.remove();
+    //         return;
+    //     }
 
-        const div = document.createElement('div');
-        div.classList.add('m-2');
-        div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-dark">${guest.getAttribute('data-message')}</p><h2 class="text-dark">${escapeHtml(name)}</h2>`;
+    //     const div = document.createElement('div');
+    //     div.classList.add('m-2');
+    //     div.innerHTML = `<p class="mt-0 mb-1 mx-0 p-0 text-dark">${guest.getAttribute('data-message')}</p><h2 class="text-dark">${escapeHtml(name)}</h2>`;
         
-        guest.appendChild(div);
-    };
+    //     guest.appendChild(div);
+    // };
     
-    const show = () => {
-        guest();
-    };
+    // const show = () => {
+    //     guest();
+    // };
     
     const showDate = () => {
         opacity('loading', 0.025);
@@ -169,7 +169,7 @@ export const util = (() => {
     return {
         open,
         copy,
-        show,
+        // show,
         showDate,
         modal,
         opacity,
