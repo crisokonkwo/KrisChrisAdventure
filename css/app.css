@@ -354,7 +354,26 @@ body {
 }
 @media screen and (max-width: 480px) {
     .img_bg {
-        background-position: center center;
+        /* background-position: center center; */
+        background-position: -190px;
+    }
+    .textCont h2 {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+}
+@media screen and (max-width: 390px) {
+    .img_bg {
+        /* background-position: center center; */
+        background-position: -200px;
+    }
+    .textCont h2 {
+        font-size: 2em; /* Adjust font size for smaller screens */
+    }
+}
+@media screen and (max-width: 375px) {
+    .img_bg {
+        /* background-position: center center; */
+        background-position: -120px;
     }
     .textCont h2 {
         font-size: 2em; /* Adjust font size for smaller screens */
